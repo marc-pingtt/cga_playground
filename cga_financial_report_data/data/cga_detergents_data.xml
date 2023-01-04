@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <record id="account_financial_report_division2"
+            model="account.financial.html.report">
+        <field name="name">Detergents</field>
+        <field name="analytic" eval="True"/>
+        <field name="unfold_all_filter" eval="True"/>
+        <field name="show_journal_filter" eval="True"/>
+        <field name='parent_id'
+               ref='account.account_reports_legal_statements_menu'/>
+    </record>
+
+    <record id="account_financial_report_detergents_sales0"
+            model="account.financial.html.report.line">
+        <field name="name">** SALES **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division2"/>
+        <field name="code">DET-SALES</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_detergents_less0"
+            model="account.financial.html.report.line">
+        <field name="name">** LESS **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division2"/>
+        <field name="code">DET-LESS</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_detergents_depreciation0"
+            model="account.financial.html.report.line">
+        <field name="name">** DEPRECIATION **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division2"/>
+        <field name="code">DET-DEPR</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_property0"
+            model="account.financial.html.report.line">
+        <field name="name">PROPERTY</field>
+        <field name="code">DET-DEPR-PY</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PROPERTY'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_plant_equipment0"
+            model="account.financial.html.report.line">
+        <field name="name">PLANT &amp; EQUIPMENT</field>
+        <field name="code">DET-DEPR-PE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PLANT &amp; EQUIPMENT'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_motor_vehicle0"
+            model="account.financial.html.report.line">
+        <field name="name">MOTOR VEHICLE</field>
+        <field name="code">DET-DEPR-MV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'MOTOR VEHICLE'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_furniture_equipment0"
+            model="account.financial.html.report.line">
+        <field name="name">FURNITURE &amp; EQUIPMENT</field>
+        <field name="code">DET-DEPR-FE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'FURNITURE &amp; EQUIPMENT'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_detergents_repairs_maintaince0"
+            model="account.financial.html.report.line">
+        <field name="name">** REPAIRS &amp; MAINTAINCE **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division2"/>
+        <field name="code">DET-RM</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_insurance0"
+            model="account.financial.html.report.line">
+        <field name="name">INSURANCE</field>
+        <field name="code">DET-RM-IN</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_repairs_maintaince0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'INSURANCE'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_detergents_production0"
+            model="account.financial.html.report.line">
+        <field name="name">** PRODUCTION **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division2"/>
+        <field name="code">DET-PN</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_n_i_s0"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">DET-PN-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_production0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_detergents_engineering0"
+            model="account.financial.html.report.line">
+        <field name="name">** ENGINEERING **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division2"/>
+        <field name="code">DET-ENG</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_total_direct_overheads0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL DIRECT OVERHEADS</field>
+        <field name="code">DET-ENG-TDO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL DIRECT OVERHEADS'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_total_direct_cost0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL DIRECT COST</field>
+        <field name="code">DET-ENG-TDC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL DIRECT COST'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_total_direct_cost0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL DIRECT COST</field>
+        <field name="code">DET-ENG-TDC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL DIRECT COST'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_detergents_indirect_overheads0"
+            model="account.financial.html.report.line">
+        <field name="name">** INDIRECT OVERHEADS **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division2"/>
+        <field name="code">DET-IO</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_detergents_production1"
+            model="account.financial.html.report.line">
+        <field name="name">** PRODUCTION **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division2"/>
+        <field name="code">DET-IO-PROD</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_n_i_s1"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">DET-IO-PROD-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_production1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_detergents_engineering1"
+            model="account.financial.html.report.line">
+        <field name="name">** ENGINEERING **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division2"/>
+        <field name="code">DET-IO-ENG</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_n_i_s2"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">DET-IO-ENG-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_engineering1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_detergents_research_development0"
+            model="account.financial.html.report.line">
+        <field name="name">** RESEARCH &amp; DEVELOPMENT **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division2"/>
+        <field name="code">DET-RD</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_n_i_s3"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">DET-RD-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_research_development0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_detergents_warehousing0"
+            model="account.financial.html.report.line">
+        <field name="name">** WAREHOUSING **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division2"/>
+        <field name="code">DET-WH</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_n_i_s4"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">DET-WH-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_contract_labour0"
+            model="account.financial.html.report.line">
+        <field name="name">CONTRACT LABOUR</field>
+        <field name="code">DET-WH-CL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CONTRACT LABOUR'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_detergents_q_a0"
+            model="account.financial.html.report.line">
+        <field name="name">** Q &amp; A **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division2"/>
+        <field name="code">DET-QA</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_n_i_s5"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">DET-QA-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_q_a0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_detergents_hse0"
+            model="account.financial.html.report.line">
+        <field name="name">** HSE **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division2"/>
+        <field name="code">DET-HSE</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_total_indirect_overheads0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL INDIRECT OVERHEADS</field>
+        <field name="code">DET-HSE-TIO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL INDIRECT OVERHEADS'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_total_direct_cost_indirect0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL DIRECT COST &amp; INDIRECT</field>
+        <field name="code">DET-HSE-TOCI</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL DIRECT COST &amp; INDIRECT'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_mfg_goods_trf_standard0"
+            model="account.financial.html.report.line">
+        <field name="name">MFG. GOODS TRF. AT STANDARD CO</field>
+        <field name="code">DET-HSE-MGTASC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'MFG. GOODS TRF. AT STANDARD CO'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_total_variance0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL VARIANCE</field>
+        <field name="code">DET-HSE-TV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL VARIANCE'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_detergents_net_gross_profit0"
+            model="account.financial.html.report.line">
+        <field name="name">NET GROSS PROFIT</field>
+        <field name="code">DET-HSE-NGP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_detergents_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'NET GROSS PROFIT'),('account_id.div_id.name', '=', 'DETERGENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+
+    <record id="action_account_report_detergents_division"
+            model="ir.actions.client">
+        <field name="name">Detergents</field>
+        <field name="tag">account_report</field>
+        <field name="context"
+               eval="{'model': 'account.financial.html.report', 'id': ref('account_financial_report_division2')}"/>
+    </record>
+
+
+</data>

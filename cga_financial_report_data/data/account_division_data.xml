@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="account.division" id="data_account_division_refined">
+            <field name="name">REFINED COCONUT OIL</field>
+        </record>
+
+        <record model="account.division" id="data_account_division_crude">
+            <field name="name">CRUDE COCONUT OIL</field>
+        </record>
+
+        <record model="account.division" id="data_account_division_liquid">
+            <field name="name">LIQUID SHORTENING</field>
+        </record>
+        <record model="account.division" id="data_account_division_margarine">
+            <field name="name">MARGARINE</field>
+        </record>
+
+        <record model="account.division" id="data_account_division_bath">
+            <field name="name">BATH SOAP</field>
+        </record>
+
+        <record model="account.division" id="data_account_division_laundry">
+            <field name="name">LAUNDRY SOAP</field>
+        </record>
+
+        <record model="account.division" id="data_account_division_detergent">
+            <field name="name">DETERGENT</field>
+        </record>
+
+        <record model="account.division" id="data_account_division_cosmetics">
+            <field name="name">COSMETICS</field>
+        </record>
+
+    </data>
+</odoo>

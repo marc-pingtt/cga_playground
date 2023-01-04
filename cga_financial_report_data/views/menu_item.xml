@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="menu_division"
+              name="Divisions"
+              parent="account.account_account_menu"
+              action="action_division"
+              sequence="30"/>
+</odoo>
