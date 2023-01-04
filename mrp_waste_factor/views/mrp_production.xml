@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="mrp_production_inherit_form" model="ir.ui.view">
+        <field name="name">mrp.production.form</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='components']/field/tree/field[@name='location_id']" position="after">
+                <field name="forecast_waste_factor" width="2"/>
+                <field name="actual_waste_factor" width="1.5"/>
+                <field name="waste_factor_variance" width="2"/>
+            </xpath>
+            <xpath expr="//notebook/page[@name='components']/field/tree/field[@name='product_uom_qty']" position="after">
+                <field name="forecast_waste_quantity" width="2" optional="hide"/>
+                <field name="actual_waste_quantity" width="2"  optional="hide"/>
+            </xpath>
+            <xpath expr="//notebook/page[@name='components']/field/tree/field[@name='product_uom']" position="after">
+                <field name="forecast_waste_cost" width="2" optional="hide"/>
+                <field name="actual_waste_cost" width="2" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

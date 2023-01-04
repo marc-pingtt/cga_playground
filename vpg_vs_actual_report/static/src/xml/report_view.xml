@@ -1,0 +1,480 @@
+<templates>
+    <t t-name="VpgSaleReport">
+        <div class="">
+            <div class="">
+                <h1 style="padding-left: 34%; padding-top: 25px;">
+                    VPG vs Actual Sales Report
+                </h1>
+            </div>
+
+            <div>
+                <div class="filter_view_pr"/>
+            </div>
+            <br/>
+            <div>
+                <div class="table_view_pr" style="right:20px; width: 98%; margin: 0 auto;"/>
+            </div>
+        </div>
+    </t>
+    <t t-name="VGPSaleTable">
+
+        <div t-if="report_type == undefined">
+            <div class="table_main_view" style="padding-top: 22px;">
+                <t t-set="i" t-value="1"/>
+                <t t-foreach="total_cat_key" t-as="cat">
+                    <hr/>
+                    <p>
+                        <a class="btn " type="button" data-toggle="collapse"
+                           t-att-data-target="'#collapseWidthExample_' + i" aria-expanded="false"
+                           aria-controls="collapseWidthExample">
+                            <t t-esc="cat"/>
+                        </a>
+                    </p>
+                    <div>
+                        <div class="collapse width" t-att-id="'collapseWidthExample_' + i">
+                            <table cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:left;">Products</th>
+                                        <th style="text-align:center;">Forecasted Total Sales</th>
+                                        <th style="text-align:center;">VS</th>
+                                        <th style="text-align:center;">Actual Total Sales</th>
+                                        <th style="text-align:center;">Variance in cases</th>
+                                        <th style="text-align:center;">Variance %</th>
+                                        <th style="text-align:center;">Variance $</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="term" t-value="total_cat_val[cat]"/>
+                                    <t t-foreach="term" t-as="dynamic_vpg_report">
+                                        <tr style="border: 1.5px solid black;" class="pr-line">
+                                            <td>
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['product']"/>
+                                                </span>
+                                            </td>
+
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['forecasted']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report[' ']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['actual_qty']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['forecasted'] - dynamic_vpg_report['actual_qty']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="(dynamic_vpg_report['forecasted'] - dynamic_vpg_report['actual_qty'])/dynamic_vpg_report['forecasted'] * 100"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="(dynamic_vpg_report['forecasted_total'] - dynamic_vpg_report['actual_total'])"/>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <t t-set="i" t-value="i+1"/>
+                </t>
+            </div>
+        </div>
+
+        <div t-if="report_type == 'report_by_total'">
+            <div class="table_main_view" style="padding-top: 22px;">
+                <t t-set="i" t-value="1"/>
+                <t t-foreach="total_cat_key" t-as="cat">
+                    <hr/>
+                    <p>
+                        <a class="btn " type="button" data-toggle="collapse"
+                           t-att-data-target="'#collapseWidthExampleTotal_' + i" aria-expanded="false"
+                           aria-controls="collapseWidthExample">
+                            <t t-esc="cat"/>
+                        </a>
+                    </p>
+                    <div>
+                        <div class="collapse width" t-att-id="'collapseWidthExampleTotal_' + i">
+                            <table cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:left;">Products</th>
+                                        <th style="text-align:center;">Forecasted Total Sales</th>
+                                        <th style="text-align:center;">VS</th>
+                                        <th style="text-align:center;">Actual Total Sales</th>
+                                        <th style="text-align:center;">Variance in cases</th>
+                                        <th style="text-align:center;">Variance %</th>
+                                        <th style="text-align:center;">Variance $</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="term" t-value="total_cat_val[cat]"/>
+                                    <t t-foreach="term" t-as="dynamic_vpg_report">
+                                        <tr style="border: 1.5px solid black;" class="pr-line">
+                                            <td>
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['product']"/>
+                                                </span>
+                                            </td>
+
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['forecasted']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report[' ']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['actual_qty']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['forecasted'] - dynamic_vpg_report['actual_qty']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="(dynamic_vpg_report['forecasted'] - dynamic_vpg_report['actual_qty'])/dynamic_vpg_report['forecasted'] * 100"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="(dynamic_vpg_report['forecasted_total'] - dynamic_vpg_report['actual_total'])"/>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <t t-set="i" t-value="i+1"/>
+                </t>
+            </div>
+        </div>
+
+        <div t-if="report_type == 'report_by_local'">
+            <div class="table_main_view" style="padding-top: 22px;">
+                <t t-set="i" t-value="1"/>
+                <t t-foreach="loc_cat_key" t-as="cat">
+                    <hr/>
+                    <p>
+                        <a class="btn " type="button" data-toggle="collapse"
+                           t-att-data-target="'#collapseWidthExampleLocal_' + i" aria-expanded="false"
+                           aria-controls="collapseWidthExample">
+                            <t t-esc="cat"/>
+                        </a>
+                    </p>
+                    <div>
+                        <div class="collapse width" t-att-id="'collapseWidthExampleLocal_' + i">
+                            <table cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:left;">Products</th>
+                                        <th style="text-align:center;">Forecasted Total Sales</th>
+                                        <th style="text-align:center;">VS</th>
+                                        <th style="text-align:center;">Actual Total Sales</th>
+                                        <th style="text-align:center;">Variance in cases</th>
+                                        <th style="text-align:center;">Variance %</th>
+                                        <th style="text-align:center;">Variance $</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="term" t-value="loc_cat_val[cat]"/>
+                                    <t t-foreach="term" t-as="dynamic_vpg_report">
+                                        <tr style="border: 1.5px solid black;" class="pr-line">
+                                            <td>
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['product']"/>
+                                                </span>
+                                            </td>
+
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['forecasted']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report[' ']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['actual_qty']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['forecasted'] - dynamic_vpg_report['actual_qty']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="(dynamic_vpg_report['forecasted'] - dynamic_vpg_report['actual_qty'])/dynamic_vpg_report['forecasted'] * 100"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="(dynamic_vpg_report['forecasted_total'] - dynamic_vpg_report['actual_total'])"/>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <t t-set="i" t-value="i+1"/>
+                </t>
+            </div>
+        </div>
+
+        <div t-if="report_type == 'report_by_export'">
+            <div class="table_main_view" style="padding-top: 22px;">
+                <t t-set="i" t-value="1"/>
+                <t t-foreach="exp_cat_key" t-as="cat">
+                    <hr/>
+                    <p>
+                        <a class="btn " type="button" data-toggle="collapse"
+                           t-att-data-target="'#collapseWidthExampleExport_' + i" aria-expanded="false"
+                           aria-controls="collapseWidthExample">
+                            <t t-esc="cat"/>
+                        </a>
+                    </p>
+                    <div>
+                        <div class="collapse width" t-att-id="'collapseWidthExampleExport_' + i">
+                            <table cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:left;">Products</th>
+                                        <th style="text-align:center;">Forecasted Total Sales</th>
+                                        <th style="text-align:center;">VS</th>
+                                        <th style="text-align:center;">Actual Total Sales</th>
+                                        <th style="text-align:center;">Variance in cases</th>
+                                        <th style="text-align:center;">Variance %</th>
+                                        <th style="text-align:center;">Variance $</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="term" t-value="exp_cat_val[cat]"/>
+                                    <t t-foreach="term" t-as="dynamic_vpg_report">
+                                        <tr style="border: 1.5px solid black;" class="pr-line">
+                                            <td>
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['product']"/>
+                                                </span>
+                                            </td>
+
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['forecasted']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report[' ']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['actual_qty']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['forecasted'] - dynamic_vpg_report['actual_qty']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="(dynamic_vpg_report['forecasted'] - dynamic_vpg_report['actual_qty'])/dynamic_vpg_report['forecasted'] * 100"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="(dynamic_vpg_report['forecasted_total'] - dynamic_vpg_report['actual_total'])"/>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <t t-set="i" t-value="i+1"/>
+                </t>
+            </div>
+        </div>
+
+        <div t-if="report_type == 'report_by_industry'">
+            <div class="table_main_view" style="padding-top: 22px;">
+                <t t-set="i" t-value="1"/>
+                <t t-foreach="ind_cat_key" t-as="cat">
+                    <hr/>
+                    <p>
+                        <a class="btn " type="button" data-toggle="collapse"
+                           t-att-data-target="'#collapseWidthExampleIndustry_' + i" aria-expanded="false"
+                           aria-controls="collapseWidthExample">
+                            <t t-esc="cat"/>
+                        </a>
+                    </p>
+                    <div>
+                        <div class="collapse width" t-att-id="'collapseWidthExampleIndustry_' + i">
+                            <table cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:left;">Products</th>
+                                        <th style="text-align:center;">Forecasted Total Sales</th>
+                                        <th style="text-align:center;">VS</th>
+                                        <th style="text-align:center;">Actual Total Sales</th>
+                                        <th style="text-align:center;">Variance in cases</th>
+                                        <th style="text-align:center;">Variance %</th>
+                                        <th style="text-align:center;">Variance $</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="term" t-value="ind_cat_val[cat]"/>
+                                    <t t-foreach="term" t-as="dynamic_vpg_report">
+                                        <tr style="border: 1.5px solid black;" class="pr-line">
+                                            <td>
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['product']"/>
+                                                </span>
+                                            </td>
+
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['forecasted']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report[' ']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['actual_qty']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="dynamic_vpg_report['forecasted'] - dynamic_vpg_report['actual_qty']"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="(dynamic_vpg_report['forecasted'] - dynamic_vpg_report['actual_qty'])/dynamic_vpg_report['forecasted'] * 100"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center;">
+                                                <span>
+                                                    <t t-esc="(dynamic_vpg_report['forecasted_total'] - dynamic_vpg_report['actual_total'])"/>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <t t-set="i" t-value="i+1"/>
+                </t>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="VPGSaleFilterView">
+        <div class="row" style="margin-right: 10px; margin-left: 10px;">
+            <div class="sub_container_left" style="width:70%;">
+                <div class="report_print">
+                    <button type="button" class="btn btn-primary" id="pdf"
+                            style="top: 0px; height: 42px; color: white; background-color: #7c7bad; border-color: #7c7bad; width: 127px;">
+                        Print (PDF)
+                    </button>
+                </div>
+            </div>
+
+            <br></br>
+            <div class="sub_container_right row"
+                 style="top:0px;position: relative;">
+
+                <div class="time_range" style="">
+                    <a type="button" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="fa fa-calendar" title="Dates" role="img" aria-label="Dates"/>
+                        Date Range
+                    </a>
+                    <div class="dropdown-menu" role="menu">
+                        <div class="form-group">
+                            <label class="" for="date_from">Start Date :</label>
+                            <div class="input-group date" id="date_from" data-target-input="nearest">
+                                <input type="text" name="date_from" class="form-control datetimepicker-input"
+                                       data-target="#date_from" t-att-name="prefix"/>
+                                <div class="input-group-append" data-target="#date_from" data-toggle="datetimepicker">
+                                    <span class="input-group-text">
+                                        <span class="fa fa-calendar" role="img" aria-label="Calendar"/>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <label class="" for="date_to">End Date :</label>
+                            <div class="input-group date" id="date_to" data-target-input="nearest">
+
+                                <input type="text" name="date_to" class="form-control datetimepicker-input"
+                                       data-target="#date_to" t-att-name="prefix"/>
+                                <div class="input-group-append" data-target="#date_to" data-toggle="datetimepicker">
+                                    <span class="input-group-text">
+                                        <span class="fa fa-calendar" role="img" aria-label="Calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <div class="search-Result-Selection mb-3" style="margin-right: 0.5rem;">
+                        <a type="button" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="fa fa-book"/>
+                            Report Type:
+                        </a>
+                        <select id="selection" class="dropdown-menu report_type" name="states[]">
+                            <div role="separator" class="dropdown-divider"/>
+                            <option value="report_by_total" selected="">Total</option>
+                            <option value="report_by_local">Local</option>
+                            <option value="report_by_export">Export</option>
+                            <option value="report_by_industry">Industrial</option>
+                        </select>
+                        <span id="report_res"/>
+                    </div>
+                    <div style="">
+                        <button type="button" id="apply_filter_type" class="btn btn-primary"
+                                style="top: 0px; height: 30px; color: white; background-color: #00A0AD; border-color: #00A0AD; width: 57px;">
+                            Apply
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

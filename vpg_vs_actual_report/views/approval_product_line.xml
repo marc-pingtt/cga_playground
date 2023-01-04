@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="approval_product_line_view_tree_inherit" model="ir.ui.view">
+            <field name="name">approval.product.line.view.tree</field>
+            <field name="model">approval.product.line</field>
+            <field name="inherit_id" ref="approvals.approval_product_line_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='quantity']" position="after">
+                    <field name="price_unit" />
+                </xpath>
+                <xpath expr="//tree/field[@name='product_uom_id']" position="after">
+                    <field name="price_subtotal" widget='monetary' options="{'currency_field': 'currency_id'}" />
+                    <field name="currency_id" invisible="1" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+
+</odoo>

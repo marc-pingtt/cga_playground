@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+         <menuitem id="report_vpg_vs_actual_sale" sequence="19"
+              name="VPG vs Actual Sales Reports" parent="account.menu_finance_reports"/>
+
+        <record id="action_vpg_vs_actual_sale" model="ir.actions.client">
+            <field name="name">VPG vs Actual Sales Report</field>
+            <field name="tag">vpg_asr</field>
+        </record>
+        <menuitem id="menu_vpg_vs_actual_sale"  action="action_vpg_vs_actual_sale"
+              name="VPG vs Actual Sales Report" parent="report_vpg_vs_actual_sale"/>
+    </data>
+</odoo>
