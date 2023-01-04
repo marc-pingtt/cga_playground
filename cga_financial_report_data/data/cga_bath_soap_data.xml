@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <record id="account_financial_report_division6"
+            model="account.financial.html.report">
+        <field name="name">Bath Soap</field>
+        <field name="analytic" eval="True"/>
+        <field name="unfold_all_filter" eval="True"/>
+        <field name="show_journal_filter" eval="True"/>
+        <field name='parent_id'
+               ref='account.account_reports_legal_statements_menu'/>
+    </record>
+
+    <record id="account_financial_report_bath_soap_sales0"
+            model="account.financial.html.report.line">
+        <field name="name">** SALES **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division6"/>
+        <field name="code">BS-SALES</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+        <record
+            id="account_financial_report_bath_soap_local_sales0"
+            model="account.financial.html.report.line">
+        <field name="name">LOCAL SALES</field>
+        <field name="code">BS-SALES-LS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_bath_soap_sales0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LOCAL SALES'),('account_id.div_id.name', '=', 'BATH SOAP'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+        <record
+            id="account_financial_report_bath_soap_export_sales0"
+            model="account.financial.html.report.line">
+        <field name="name">EXPORT SALES</field>
+        <field name="code">BS-SALES-ES</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_bath_soap_sales0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EXPORT SALES'),('account_id.div_id.name', '=', 'BATH SOAP'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_bath_soap_total_income0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL INCOME</field>
+        <field name="code">BS-SALES-TI</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_bath_soap_sales0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL INCOME'),('account_id.div_id.name', '=', 'BATH SOAP'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_bath_soap_less0"
+            model="account.financial.html.report.line">
+        <field name="name">** LESS **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division6"/>
+        <field name="code">BS-LESS</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+
+
+    <record id="action_account_report_bath_soap_division"
+            model="ir.actions.client">
+        <field name="name">Bath Soap</field>
+        <field name="tag">account_report</field>
+        <field name="context"
+               eval="{'model': 'account.financial.html.report', 'id': ref('account_financial_report_division6')}"/>
+    </record>
+
+</data>

@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <record id="account_financial_report_division3"
+            model="account.financial.html.report">
+        <field name="name">Cosmetics</field>
+        <field name="analytic" eval="True"/>
+        <field name="unfold_all_filter" eval="True"/>
+        <field name="show_journal_filter" eval="True"/>
+        <field name='parent_id'
+               ref='account.account_reports_legal_statements_menu'/>
+    </record>
+
+    <record id="account_financial_report_cosmetics_sales0"
+            model="account.financial.html.report.line">
+        <field name="name">** SALES **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division3"/>
+        <field name="code">COS-SALES</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_cosmetics_local_sales0"
+            model="account.financial.html.report.line">
+        <field name="name">LOCAL SALES</field>
+        <field name="code">COS-SALES-LS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_cosmetics_sales0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LOCAL SALES'),('account_id.div_id.name', '=', 'COSMETICS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_cosmetics_export_sales0"
+            model="account.financial.html.report.line">
+        <field name="name">EXPORT SALES</field>
+        <field name="code">COS-SALES-ES</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_cosmetics_sales0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EXPORT SALES'),('account_id.div_id.name', '=', 'COSMETICS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_cosmetics_total_sales0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL SALES</field>
+        <field name="code">COS-SALES-TS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_cosmetics_sales0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL SALES'),('account_id.div_id.name', '=', 'COSMETICS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_cosmetics_less0"
+            model="account.financial.html.report.line">
+        <field name="name">** LESS **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division3"/>
+        <field name="code">COS-LESS</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_cosmetics_cost_of_sale_local0"
+            model="account.financial.html.report.line">
+        <field name="name">COST OF SALES LOCAL</field>
+        <field name="code">COS-LESS-CSL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_cosmetics_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'COST OF SALES LOCAL'),('account_id.div_id.name', '=', 'COSMETICS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_cosmetics_cost_of_sale_export0"
+            model="account.financial.html.report.line">
+        <field name="name">COST OF SALES EXPORT</field>
+        <field name="code">COS-LESS-CSE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_cosmetics_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'COST OF SALES EXPORT'),('account_id.div_id.name', '=', 'COSMETICS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_cosmetics_gross_profit0"
+            model="account.financial.html.report.line">
+        <field name="name">GROSS PROFIT</field>
+        <field name="code">COS-LESS-GP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_cosmetics_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'GROSS PROFIT'),('account_id.div_id.name', '=', 'COSMETICS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_cosmetics_pack_mat_consumed_std0"
+            model="account.financial.html.report.line">
+        <field name="name">PACK. MAT. CONSUMED-STD</field>
+        <field name="code">COS-LESS-PMCS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_cosmetics_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PACK. MAT. CONSUMED-STD'),('account_id.div_id.name', '=', 'COSMETICS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_cosmetics_pack_mat_consumed_act0"
+            model="account.financial.html.report.line">
+        <field name="name">PACK. MAT. CONSUMED-ACT</field>
+        <field name="code">COS-LESS-PMCA</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_cosmetics_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PACK. MAT. CONSUMED-ACT'),('account_id.div_id.name', '=', 'COSMETICS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_cosmetics_total_packaging0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL PACKAGING</field>
+        <field name="code">COS-LESS-TP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_cosmetics_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL PACKAGING'),('account_id.div_id.name', '=', 'COSMETICS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_cosmetics_actual_direct_overheads0"
+            model="account.financial.html.report.line">
+        <field name="name">ACTUAL DIRECT OVERHEADS</field>
+        <field name="code">COS-LESS-ADO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_cosmetics_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'ACTUAL DIRECT OVERHEADS'),('account_id.div_id.name', '=', 'COSMETICS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_cosmetics_depreciation0"
+            model="account.financial.html.report.line">
+        <field name="name">** DEPRECIATION **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division3"/>
+        <field name="code">COS-DEPR</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_cosmetics_motor_vehicle0"
+            model="account.financial.html.report.line">
+        <field name="name">MOTOR VEHICLE</field>
+        <field name="code">COS-DEPR-MV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_cosmetics_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'MOTOR VEHICLE'),('account_id.div_id.name', '=', 'COSMETICS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_cosmetics_repairs_maintaince0"
+            model="account.financial.html.report.line">
+        <field name="name">** REPAIRS &amp; MAINTAINCE **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division3"/>
+        <field name="code">COS-RM</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_cosmetics_repairs_maintaince0"
+            model="account.financial.html.report.line">
+        <field name="name">** PRODUCTION **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division3"/>
+        <field name="code">COS-PROD</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_cosmetics_engineering0"
+            model="account.financial.html.report.line">
+        <field name="name">** ENGINEERING **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division3"/>
+        <field name="code">COS-ENG</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_cosmetics_total_direct_overheads0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL DIRECT OVERHEADS</field>
+        <field name="code">COS-ENG-TDO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_cosmetics_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL DIRECT OVERHEADS'),('account_id.div_id.name', '=', 'COSMETICS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_cosmetics_total_direct_cost0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL DIRECT COST</field>
+        <field name="code">COS-ENG-TDC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_cosmetics_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL DIRECT COST'),('account_id.div_id.name', '=', 'COSMETICS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_cosmetics_indirect_overheads0"
+            model="account.financial.html.report.line">
+        <field name="name">** INDIRECT OVERHEADS **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division3"/>
+        <field name="code">COS-IO</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_cosmetics_production1"
+            model="account.financial.html.report.line">
+        <field name="name">** PRODUCTION **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division3"/>
+        <field name="code">COS-IO-PROD</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_cosmetics_engineering1"
+            model="account.financial.html.report.line">
+        <field name="name">** ENGINEERING **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division3"/>
+        <field name="code">COS-IO-ENG</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_cosmetics_research_development0"
+            model="account.financial.html.report.line">
+        <field name="name">** RESEARCH &amp; DEVELOPMENT **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division3"/>
+        <field name="code">COS-RD</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_cosmetics_research_development0"
+            model="account.financial.html.report.line">
+        <field name="name">** RESEARCH &amp; DEVELOPMENT **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division3"/>
+        <field name="code">COS-RD</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_cosmetics_warehousing0"
+            model="account.financial.html.report.line">
+        <field name="name">** WAREHOUSING **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division3"/>
+        <field name="code">COS-WH</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_cosmetics_q_a0"
+            model="account.financial.html.report.line">
+        <field name="name">** Q &amp; A **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division3"/>
+        <field name="code">COS-QA</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_cosmetics_hse0"
+            model="account.financial.html.report.line">
+        <field name="name">** HSE **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division3"/>
+        <field name="code">COS-HSE</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_cosmetics_total_direct_indirect_costs0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL DIRECT &amp; INDIRECT COSTS</field>
+        <field name="code">COS-HSE-TDIC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_cosmetics_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL DIRECT &amp; INDIRECT COSTS'),('account_id.div_id.name', '=', 'COSMETICS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_cosmetics_total_variance0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL VARIANCE</field>
+        <field name="code">COS-HSE-TV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_cosmetics_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL VARIANCE'),('account_id.div_id.name', '=', 'COSMETICS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_cosmetics_net_gross_profit0"
+            model="account.financial.html.report.line">
+        <field name="name">NET GROSS PROFIT</field>
+        <field name="code">COS-HSE-NGS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_cosmetics_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'NET GROSS PROFIT'),('account_id.div_id.name', '=', 'COSMETICS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="action_account_report_cosmetics_division"
+            model="ir.actions.client">
+        <field name="name">Cosmetics</field>
+        <field name="tag">account_report</field>
+        <field name="context"
+               eval="{'model': 'account.financial.html.report', 'id': ref('account_financial_report_division3')}"/>
+    </record>
+
+</data>

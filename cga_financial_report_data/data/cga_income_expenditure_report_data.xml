@@ -1,0 +1,2375 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <record id="account_financial_report_cga0"
+            model="account.financial.html.report">
+        <field name="name">CGA Income and Expenditure</field>
+        <field name="analytic" eval="True"/>
+        <field name="unfold_all_filter" eval="True"/>
+        <field name="show_journal_filter" eval="True"/>
+        <field name='parent_id'
+               ref='account.account_reports_legal_statements_menu'/>
+    </record>
+
+    <record id="account_financial_report_income_sales0"
+            model="account.financial.html.report.line">
+        <field name="name">**SALES**</field>
+        <field name="code">CGA-IE-SALES</field>
+        <field name="financial_report_id" ref="account_financial_report_cga0"/>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_local_sales0"
+            model="account.financial.html.report.line">
+        <field name="name">LOCAL SALES</field>
+        <field name="code">CGA-IE-SALES-LS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_sales0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LOCAL SALES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_export_sales0"
+            model="account.financial.html.report.line">
+        <field name="name">EXPORT SALES</field>
+        <field name="code">CGA-IE-SALES-ES</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_sales0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EXPORT SALES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_other_income0"
+            model="account.financial.html.report.line">
+        <field name="name">OTHER INCOME</field>
+        <field name="code">CGA-IE-SALES-OI</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_sales0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'OTHER INCOME'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_total_income0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL INCOME</field>
+        <field name="code">CGA-IE-SALES-TI</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_sales0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL INCOME'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_income_less0"
+            model="account.financial.html.report.line">
+        <field name="name">** LESS **</field>
+        <field name="code">CGA-IE-LESS</field>
+        <field name="financial_report_id" ref="account_financial_report_cga0"/>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_cost_of_local0"
+            model="account.financial.html.report.line">
+        <field name="name">COST OF SALES LOCAL</field>
+        <field name="code">CGA-IE-LESS-CSL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'COST OF SALES LOCAL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_cost_of_export0"
+            model="account.financial.html.report.line">
+        <field name="name">COST OF SALES EXPORT</field>
+        <field name="code">CGA-IE-LESS-CSE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'COST OF SALES EXPORT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_gross_profite0"
+            model="account.financial.html.report.line">
+        <field name="name">GROSS PROFIT</field>
+        <field name="code">CGA-IE-LESS-GP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'GROSS PROFIT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_raw_material_consumed0"
+            model="account.financial.html.report.line">
+        <field name="name">RAW MATERIAL CONSUMED - ACT</field>
+        <field name="code">CGA-IE-LESS-RMCA</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'RAW MATERIAL CONSUMED - ACT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_total_material0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL MATERIAL</field>
+        <field name="code">CGA-IE-LESS-TM</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL MATERIAL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_ppv0"
+            model="account.financial.html.report.line">
+        <field name="name">PPV</field>
+        <field name="code">CGA-IE-LESS-PPV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PPV'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_cost_adjustment0"
+            model="account.financial.html.report.line">
+        <field name="name">COST ADJUSTMENT</field>
+        <field name="code">CGA-IE-LESS-CA</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'COST ADJUSTMENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_pack_mat_consumed0"
+            model="account.financial.html.report.line">
+        <field name="name">PACK.MAT.CONSUMED-STD</field>
+        <field name="code">CGA-IE-LESS-PMC-STD</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PACK.MAT.CONSUMED-STD'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_pack_mat_consumed_act0"
+            model="account.financial.html.report.line">
+        <field name="name">PACK.MAT.CONSUMED-ACT</field>
+        <field name="code">CGA-IE-LESS-PMC-ACT</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PACK.MAT.CONSUMED-ACT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_total_pack0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL PACKAGING</field>
+        <field name="code">CGA-IE-LESS-TP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL PACKAGING'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_inventory_adjustment0"
+            model="account.financial.html.report.line">
+        <field name="name">INVENTORY ADJUSTMENT</field>
+        <field name="code">CGA-IE-LESS-IA</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'INVENTORY ADJUSTMENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_operational_supplies0"
+            model="account.financial.html.report.line">
+        <field name="name">OPERATIONAL SUPPLIES</field>
+        <field name="code">CGA-IE-LESS-OS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'OPERATIONAL SUPPLIES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_direct_labour_act0"
+            model="account.financial.html.report.line">
+        <field name="name">DIRECT LABOUR-ACT</field>
+        <field name="code">CGA-IE-LESS-DL-ACT</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'DIRECT LABOUR-ACT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_contract_labour_std0"
+            model="account.financial.html.report.line">
+        <field name="name">CONTRACT LABOUR-STD</field>
+        <field name="code">CGA-IE-LESS-CL-STD</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CONTRACT LABOUR-STD'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_actual_direct_overheads0"
+            model="account.financial.html.report.line">
+        <field name="name">ACTUAL DIRECT OVERHEADS</field>
+        <field name="code">CGA-IE-LESS-ADO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id" ref='account_financial_report_income_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'ACTUAL DIRECT OVERHEADS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_income_depreciation0"
+            model="account.financial.html.report.line">
+        <field name="name">** DEPRECIATION **</field>
+        <field name="code">CGA-IE-DEPR</field>
+        <field name="financial_report_id" ref="account_financial_report_cga0"/>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_property_plant_equipment0"
+            model="account.financial.html.report.line">
+        <field name="name">PROPERTY PLANT &amp; EQUIPMENT</field>
+        <field name="code">CGA-IE-DEPR-PPE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PROPERTY PLANT &amp; EQUIPMENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_lab_equipment0"
+            model="account.financial.html.report.line">
+        <field name="name">LAB EQUIPMENT</field>
+        <field name="code">CGA-IE-DEPR-LE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LAB EQUIPMENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_motor_vehicle0"
+            model="account.financial.html.report.line">
+        <field name="name">MOTOR VEHICLE</field>
+        <field name="code">CGA-IE-DEPR-MV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'MOTOR VEHICLE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_furniture_equipment0"
+            model="account.financial.html.report.line">
+        <field name="name">FURNITURE &amp; EQUIPMENT</field>
+        <field name="code">CGA-IE-DEPR-FE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'FURNITURE &amp; EQUIPMENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_income_repairs_maintain0"
+            model="account.financial.html.report.line">
+        <field name="name">** REPAIRS &amp; MAINTAINCE **</field>
+        <field name="code">CGA-IE-RM</field>
+        <field name="financial_report_id" ref="account_financial_report_cga0"/>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_property_plant_equipment1"
+            model="account.financial.html.report.line">
+        <field name="name">PROPERTY PLANT &amp; EQUIPMENT</field>
+        <field name="code">CGA-IE-RM-PPE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_repairs_maintain0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PROPERTY PLANT &amp; EQUIPMENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_lab_equipment1"
+            model="account.financial.html.report.line">
+        <field name="name">LAB EQUIPMENT</field>
+        <field name="code">CGA-IE-RM-LE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_repairs_maintain0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LAB EQUIPMENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_motor_vehicle1"
+            model="account.financial.html.report.line">
+        <field name="name">MOTOR VEHICLE</field>
+        <field name="code">CGA-IE-RM-MV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_repairs_maintain0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'MOTOR VEHICLE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_furniture_equipment1"
+            model="account.financial.html.report.line">
+        <field name="name">FURNITURE &amp; EQUIPMENT</field>
+        <field name="code">CGA-IE-RM-FE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_repairs_maintain0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'FURNITURE &amp; EQUIPMENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_rep_maint_fur_fix0"
+            model="account.financial.html.report.line">
+        <field name="name">REP. &amp; MAINT.FUR/FIX</field>
+        <field name="code">CGA-IE-RM-RMFF</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_repairs_maintain0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'REP. &amp; MAINT.FUR/FIX'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_insurance0"
+            model="account.financial.html.report.line">
+        <field name="name">INSURANCE</field>
+        <field name="code">CGA-IE-RM-INS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_repairs_maintain0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'INSURANCE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_income_production0"
+            model="account.financial.html.report.line">
+        <field name="name">** PRODUCTION **</field>
+        <field name="code">CGA-IE-PROD</field>
+        <field name="financial_report_id" ref="account_financial_report_cga0"/>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_nis0"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">CGA-IE-PROD-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_production0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_income_engineering0"
+            model="account.financial.html.report.line">
+        <field name="name">** ENGINEERING **</field>
+        <field name="code">CGA-IE-ENG</field>
+        <field name="financial_report_id" ref="account_financial_report_cga0"/>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_nis1"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">CGA-IE-ENG-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_total_direct_overseas0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL DIRECT OVERSEAS</field>
+        <field name="code">CGA-IE-ENG-TDO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL DIRECT OVERSEAS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_total_direct_cost0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL DIRECT COST</field>
+        <field name="code">CGA-IE-ENG-TDC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL DIRECT COST'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_income_indirect_overheads0"
+            model="account.financial.html.report.line">
+        <field name="name">** INDIRECT OVERHEADS **</field>
+        <field name="code">CGA-IE-IO</field>
+        <field name="financial_report_id" ref="account_financial_report_cga0"/>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_electricity0"
+            model="account.financial.html.report.line">
+        <field name="name">ELECTRICITY</field>
+        <field name="code">CGA-IE-IO-EY</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'ELECTRICITY'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_fuel0"
+            model="account.financial.html.report.line">
+        <field name="name">FUEL</field>
+        <field name="code">CGA-IE-FL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'FUEL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_water0"
+            model="account.financial.html.report.line">
+        <field name="name">WATER</field>
+        <field name="code">CGA-IE-IO-WR</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'WATER'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_rent_lease_property0"
+            model="account.financial.html.report.line">
+        <field name="name">RENT &amp; LEASE PROPERTY</field>
+        <field name="code">CGA-IE-IO-RLP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'RENT &amp; LEASE PROPERTY'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_gas_oil0"
+            model="account.financial.html.report.line">
+        <field name="name">GAS &amp; OIL</field>
+        <field name="code">CGA-IE-IO-GO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'GAS &amp; OIL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_cleaning0"
+            model="account.financial.html.report.line">
+        <field name="name">CLEANING</field>
+        <field name="code">CGA-IE-IO-CG</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CLEANING'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_operational_supplies1"
+            model="account.financial.html.report.line">
+        <field name="name">OPERATIONAL SUPPLIES</field>
+        <field name="code">CGA-IE-IO-OS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'OPERATIONAL SUPPLIES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_private_jobs0"
+            model="account.financial.html.report.line">
+        <field name="name">PRIVATE JOBS</field>
+        <field name="code">CGA-IE-IO-PJ</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PRIVATE JOBS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_courier0"
+            model="account.financial.html.report.line">
+        <field name="name">COURIER</field>
+        <field name="code">CGA-IE-IO-CR</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'COURIER'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_q_a_consumables0"
+            model="account.financial.html.report.line">
+        <field name="name">Q&amp;A CONSUMABLES</field>
+        <field name="code">CGA-IE-IO-QAC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'Q&amp;A CONSUMABLES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_income_production1"
+            model="account.financial.html.report.line">
+        <field name="name">** PRODUCTION **</field>
+        <field name="code">CGA-IE-IO-PROD</field>
+        <field name="financial_report_id" ref="account_financial_report_cga0"/>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_salaries0"
+            model="account.financial.html.report.line">
+        <field name="name">SALARIES</field>
+        <field name="code">CGA-IE-IO-PROD-SY</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_production1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'SALARIES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_n_i_s0"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">CGA-IE-IO-PROD-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_production1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_education_training0"
+            model="account.financial.html.report.line">
+        <field name="name">EDUCATION &amp; TRAINING</field>
+        <field name="code">CGA-IE-IO-PROD-ET</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_production1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EDUCATION &amp; TRAINING'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_general_expenses0"
+            model="account.financial.html.report.line">
+        <field name="name">GENERAL EXPENSES</field>
+        <field name="code">CGA-IE-IO-PROD-GE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_production1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'GENERAL EXPENSES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_uniforms0"
+            model="account.financial.html.report.line">
+        <field name="name">UNIFORMS</field>
+        <field name="code">CGA-IE-IO-PROD-US</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_production1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'UNIFORMS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_contract_labour0"
+            model="account.financial.html.report.line">
+        <field name="name">CONTRACT LABOUR</field>
+        <field name="code">CGA-IE-IO-PROD-CL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_production1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CONTRACT LABOUR'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_operational_supplies2"
+            model="account.financial.html.report.line">
+        <field name="name">OPERATIONAL SUPPLIES</field>
+        <field name="code">CGA-IE-IO-PROD-OS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_production1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'OPERATIONAL SUPPLIES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_cleaning1"
+            model="account.financial.html.report.line">
+        <field name="name">CLEANING</field>
+        <field name="code">CGA-IE-IO-PROD-CG</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_production1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CLEANING'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_private_jobs1"
+            model="account.financial.html.report.line">
+        <field name="name">PRIVATE JOBS</field>
+        <field name="code">CGA-IE-IO-PROD-PJ</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_production1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PRIVATE JOBS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_vehicle_gas_oil0"
+            model="account.financial.html.report.line">
+        <field name="name">VEHICLE GAS &amp; OIL</field>
+        <field name="code">CGA-IE-IO-PROD-VGO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_production1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'VEHICLE GAS &amp; OIL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_income_engineering1"
+            model="account.financial.html.report.line">
+        <field name="name">** ENGINEERING **</field>
+        <field name="code">CGA-IE-IO-ENG</field>
+        <field name="financial_report_id" ref="account_financial_report_cga0"/>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_salaries1"
+            model="account.financial.html.report.line">
+        <field name="name">SALARIES</field>
+        <field name="code">CGA-IE-IO-ENG-SAL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_engineering1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'SALARIES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_wages0"
+            model="account.financial.html.report.line">
+        <field name="name">WAGES</field>
+        <field name="code">CGA-IE-IO-ENG-WS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_engineering1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'WAGES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_n_i_s1"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">CGA-IE-IO-ENG-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_engineering1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_uniforms1"
+            model="account.financial.html.report.line">
+        <field name="name">UNIFORMS</field>
+        <field name="code">CGA-IE-IO-ENG-US</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_engineering1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'UNIFORMS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_contract_labour1"
+            model="account.financial.html.report.line">
+        <field name="name">CONTRACT LABOUR</field>
+        <field name="code">CGA-IE-IO-ENG-CL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_engineering1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CONTRACT LABOUR'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_telephone1"
+            model="account.financial.html.report.line">
+        <field name="name">TELEPHONE</field>
+        <field name="code">CGA-IE-IO-ENG-TP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_engineering1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TELEPHONE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_courier1"
+            model="account.financial.html.report.line">
+        <field name="name">COURIER</field>
+        <field name="code">CGA-IE-IO-ENG-CR</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_engineering1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'COURIER'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_operational_supplies1"
+            model="account.financial.html.report.line">
+        <field name="name">OPERATIONAL SUPPLIES</field>
+        <field name="code">CGA-IE-IO-ENG-OS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_engineering1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'OPERATIONAL SUPPLIES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_cleaning1"
+            model="account.financial.html.report.line">
+        <field name="name">CLEANING</field>
+        <field name="code">CGA-IE-IO-ENG-CG</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_engineering1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CLEANING'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_private_jobs1"
+            model="account.financial.html.report.line">
+        <field name="name">PRIVATE JOBS</field>
+        <field name="code">CGA-IE-IO-ENG-PJ</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_engineering1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PRIVATE JOBS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_vehicle_jobs_oil1"
+            model="account.financial.html.report.line">
+        <field name="name">VEHICLE JOBS &amp; OIL</field>
+        <field name="code">CGA-IE-IO-ENG-VJO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_engineering1'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'VEHICLE JOBS &amp; OIL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_income_research_development0"
+            model="account.financial.html.report.line">
+        <field name="name">** RESEARCH &amp; DEVELOPMENT **</field>
+        <field name="code">CGA-IE-RD</field>
+        <field name="financial_report_id" ref="account_financial_report_cga0"/>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_n_i_s2"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">CGA-IE-RD-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_research_development0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_income_warehousing0"
+            model="account.financial.html.report.line">
+        <field name="name">** WAREHOUSING **</field>
+        <field name="code">CGA-IE-WH</field>
+        <field name="financial_report_id" ref="account_financial_report_cga0"/>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_salaries2"
+            model="account.financial.html.report.line">
+        <field name="name">SALARIES</field>
+        <field name="code">CGA-IE-WH-SAL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'SALARIES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_wages0"
+            model="account.financial.html.report.line">
+        <field name="name">WAGES</field>
+        <field name="code">CGA-IE-WH-WS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'WAGES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_n_i_s0"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">CGA-IE-WH-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_education_training0"
+            model="account.financial.html.report.line">
+        <field name="name">EDUCATION &amp; TRAINING</field>
+        <field name="code">CGA-IE-WH-ET</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EDUCATION &amp; TRAINING'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_delivery_kfc0"
+            model="account.financial.html.report.line">
+        <field name="name">TRANSPORT &amp; DELIVERY - KFC</field>
+        <field name="code">CGA-IE-WH-TD-KFC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TRANSPORT &amp; DELIVERY - KFC'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_delivery_indus0"
+            model="account.financial.html.report.line">
+        <field name="name">TRANSPORT &amp; DELIVERY - INDUS</field>
+        <field name="code">CGA-IE-WH-TD-INDUS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TRANSPORT &amp; DELIVERY - INDUS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_delivery_contr0"
+            model="account.financial.html.report.line">
+        <field name="name">TRANSPORT &amp; DELIVERY - CONTR</field>
+        <field name="code">CGA-IE-WH-TD-CONTR</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TRANSPORT &amp; DELIVERY - CONTR'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_general_expenses0"
+            model="account.financial.html.report.line">
+        <field name="name">GENERAL EXPENSES</field>
+        <field name="code">CGA-IE-WH-GE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'GENERAL EXPENSES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_uniforms0"
+            model="account.financial.html.report.line">
+        <field name="name">UNIFORMS</field>
+        <field name="code">CGA-IE-WH-US</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'UNIFORMS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_contract_labour0"
+            model="account.financial.html.report.line">
+        <field name="name">CONTRACT LABOUR</field>
+        <field name="code">CGA-IE-WH-CL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CONTRACT LABOUR'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_rentals_warehouse0"
+            model="account.financial.html.report.line">
+        <field name="name">RENTALS WAREHOUSE</field>
+        <field name="code">CGA-IE-WH-RWH</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'RENTALS WAREHOUSE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_telephone0"
+            model="account.financial.html.report.line">
+        <field name="name">TELEPHONE</field>
+        <field name="code">CGA-IE-WH-TP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TELEPHONE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_vehicle_gas_oil0"
+            model="account.financial.html.report.line">
+        <field name="name">VEHICLE GAS &amp; OIL</field>
+        <field name="code">CGA-IE-WH-VGO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'VEHICLE GAS &amp; OIL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_income_qa0"
+            model="account.financial.html.report.line">
+        <field name="name">** Q &amp; A **</field>
+        <field name="code">CGA-IE-QA</field>
+        <field name="financial_report_id" ref="account_financial_report_cga0"/>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_transport_salaries0"
+            model="account.financial.html.report.line">
+        <field name="name">SALARIES</field>
+        <field name="code">CGA-IE-QA-SAL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_qa0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'SALARIES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_n_i_s0"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">CGA-IE-QA-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_qa0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_local_travel_subsistence0"
+            model="account.financial.html.report.line">
+        <field name="name">LOCAL TRAVEL &amp; SUBSISTENCE</field>
+        <field name="code">CGA-IE-QA-LTS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_qa0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LOCAL TRAVEL &amp; SUBSISTENCE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_education_training0"
+            model="account.financial.html.report.line">
+        <field name="name">EDUCATION AND TRAINING</field>
+        <field name="code">CGA-IE-QA-ET</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_qa0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EDUCATION AND TRAINING'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_contract_labour1"
+            model="account.financial.html.report.line">
+        <field name="name">CONTRACT LABOUR</field>
+        <field name="code">CGA-IE-QA-CL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_qa0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CONTRACT LABOUR'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_vehicle_gas_oil_3"
+            model="account.financial.html.report.line">
+        <field name="name">VEHICLE GAS &amp; OIL</field>
+        <field name="code">CGA-IE-QA-VGO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_qa0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'VEHICLE GAS &amp; OIL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_income_hse0"
+            model="account.financial.html.report.line">
+        <field name="name">** HSE **</field>
+        <field name="code">CGA-IE-HSE</field>
+        <field name="financial_report_id" ref="account_financial_report_cga0"/>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_transport_salary0"
+            model="account.financial.html.report.line">
+        <field name="name">SALARIES</field>
+        <field name="code">CGA-IE-HSE-SAL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'SALARIES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_education_training1"
+            model="account.financial.html.report.line">
+        <field name="name">EDUCATION &amp; TRAINING</field>
+        <field name="code">CGA-IE-HSE-ET</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EDUCATION &amp; TRAINING'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_general_expense1"
+            model="account.financial.html.report.line">
+        <field name="name">GENERAL EXPENSES</field>
+        <field name="code">CGA-IE-HSE-GE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'GENERAL EXPENSES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_internal_security1"
+            model="account.financial.html.report.line">
+        <field name="name">INTERNAL SECURITY</field>
+        <field name="code">CGA-IE-HSE-IS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'INTERNAL SECURITY'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_external_security1"
+            model="account.financial.html.report.line">
+        <field name="name">EXTERNAL SECURITY</field>
+        <field name="code">CGA-IE-HSE-ES</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EXTERNAL SECURITY'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_telephone1"
+            model="account.financial.html.report.line">
+        <field name="name">TELEPHONE</field>
+        <field name="code">CGA-IE-HSE-TP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TELEPHONE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_courier1"
+            model="account.financial.html.report.line">
+        <field name="name">COURIER</field>
+        <field name="code">CGA-IE-HSE-CR</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'COURIER'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_pest_control1"
+            model="account.financial.html.report.line">
+        <field name="name">PEST CONTROL</field>
+        <field name="code">CGA-IE-HSE-PC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PEST CONTROL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_environmental_expenses1"
+            model="account.financial.html.report.line">
+        <field name="name">ENVIRONMENTAL EXPENSES</field>
+        <field name="code">CGA-IE-HSE-EE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'ENVIRONMENTAL EXPENSES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_operational_supplies1"
+            model="account.financial.html.report.line">
+        <field name="name">OPERATIONAL SUPPLIES</field>
+        <field name="code">CGA-IE-HSE-OS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'OPERATIONAL SUPPLIES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_cleaning1"
+            model="account.financial.html.report.line">
+        <field name="name">CLEANING</field>
+        <field name="code">CGA-IE-HSE-CG</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CLEANING'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_private_jobs1"
+            model="account.financial.html.report.line">
+        <field name="name">PRIVATE JOBS</field>
+        <field name="code">CGA-IE-HSE-PJ</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PRIVATE JOBS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_total_indirect_overheads1"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL INDIRECT OVERHEADS</field>
+        <field name="code">CGA-IE-HSE-TIO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL INDIRECT OVERHEADS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_total_direct_cost_indirect0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL DIRECT COST &amp; INDIRECT</field>
+        <field name="code">CGA-IE-HSE-TDCI</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL DIRECT COST &amp; INDIRECT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_mfg_goods_trf_at_std_co0"
+            model="account.financial.html.report.line">
+        <field name="name">MFG. GOODS TRF. AT STANDARD CO</field>
+        <field name="code">CGA-IE-HSE-MGTSC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'MFG. GOODS TRF. AT STANDARD CO'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_total_variance0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL VARIANCE</field>
+        <field name="code">CGA-IE-HSE-TV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL VARIANCE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_net_gross_profit0"
+            model="account.financial.html.report.line">
+        <field name="name">NET GROSS PROFIT</field>
+        <field name="code">CGA-IE-HSE-NGP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'NET GROSS PROFIT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_local_marketing_expenses0"
+            model="account.financial.html.report.line">
+        <field name="name">LOCAL MARKETING EXPENSES</field>
+        <field name="code">CGA-IE-HSE-LME</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LOCAL MARKETING EXPENSES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+
+    <record id="account_financial_transport_n_i_s1"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">CGA-IE-HSE-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_pop1"
+            model="account.financial.html.report.line">
+        <field name="name">POP</field>
+        <field name="code">CGA-IE-HSE-POP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'POP'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_social_media1"
+            model="account.financial.html.report.line">
+        <field name="name">SOCIAL MEDIA</field>
+        <field name="code">CGA-IE-HSE-SM</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'SOCIAL MEDIA'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_digital_campaigns_endorsemen1"
+            model="account.financial.html.report.line">
+        <field name="name">DIGITAL CAMPAIGNS &amp; ENDORSEMEN</field>
+        <field name="code">CGA-IE-HSE-DCE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'DIGITAL CAMPAIGNS &amp; ENDORSEMEN'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_creative_artwork1"
+            model="account.financial.html.report.line">
+        <field name="name">CREATIVE ARTWORK</field>
+        <field name="code">CGA-IE-HSE-CA</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CREATIVE ARTWORK'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_events1"
+            model="account.financial.html.report.line">
+        <field name="name">EVENTS</field>
+        <field name="code">CGA-IE-HSE-EV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EVENTS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_signage_brochures1"
+            model="account.financial.html.report.line">
+        <field name="name">SIGNAGE &amp; BROCHURES</field>
+        <field name="code">CGA-IE-HSE-SB</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'SIGNAGE &amp; BROCHURES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_damage_returns1"
+            model="account.financial.html.report.line">
+        <field name="name">DAMAGES AND RETURNS</field>
+        <field name="code">CGA-IE-HSE-DR</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'DAMAGES AND RETURNS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_phone_fax_e-mail1"
+            model="account.financial.html.report.line">
+        <field name="name">PHONE/FAX/E-MAIL</field>
+        <field name="code">CGA-IE-HSE-PFE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PHONE/FAX/E-MAIL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_marketing_research1"
+            model="account.financial.html.report.line">
+        <field name="name">MARKETING RESEARCH</field>
+        <field name="code">CGA-IE-HSE-MR</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'MARKETING RESEARCH'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_subscriptions1"
+            model="account.financial.html.report.line">
+        <field name="name">SUBSCRIPTIONS</field>
+        <field name="code">CGA-IE-HSE-SUB</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'SUBSCRIPTIONS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_bonus_bases1"
+            model="account.financial.html.report.line">
+        <field name="name">BONUS CASES</field>
+        <field name="code">CGA-IE-HSE-BC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'BONUS CASES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_rebates1"
+            model="account.financial.html.report.line">
+        <field name="name">REBATES</field>
+        <field name="code">CGA-IE-HSE-REB</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'REBATES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_courier_services1"
+            model="account.financial.html.report.line">
+        <field name="name">COURIER SERVICES</field>
+        <field name="code">CGA-IE-HSE-CRS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'COURIER SERVICES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_total_local_mkt_expenses1"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL LOCAL MKT EXPENSES</field>
+        <field name="code">CGA-IE-HSE-TLME</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL LOCAL MKT EXPENSES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_export_marketing_expenses1"
+            model="account.financial.html.report.line">
+        <field name="name">EXPORT MARKETING EXPENSES</field>
+        <field name="code">CGA-IE-HSE-EME</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EXPORT MARKETING EXPENSES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_telephone_fax1"
+            model="account.financial.html.report.line">
+        <field name="name">TELEPHONE &amp; FAX</field>
+        <field name="code">CGA-IE-HSE-TPF</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TELEPHONE &amp; FAX'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_motor_vehicles_gas_oil1"
+            model="account.financial.html.report.line">
+        <field name="name">MOTOR VEHICLE GAS &amp; OIL</field>
+        <field name="code">CGA-IE-HSE-MVGO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'MOTOR VEHICLE GAS &amp; OIL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_entertainment1"
+            model="account.financial.html.report.line">
+        <field name="name">ENTERTAINMENT</field>
+        <field name="code">CGA-IE-HSE-EM</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'ENTERTAINMENT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_trade_promotions1"
+            model="account.financial.html.report.line">
+        <field name="name">TRADE PROMOTIONS</field>
+        <field name="code">CGA-IE-HSE-TRP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TRADE PROMOTIONS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_export_charges_fund1"
+            model="account.financial.html.report.line">
+        <field name="name">EXPORT CHARGES &amp; FUND</field>
+        <field name="code">CGA-IE-HSE-ECF</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EXPORT CHARGES &amp; FUND'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_recipes1"
+            model="account.financial.html.report.line">
+        <field name="name">RECIPES</field>
+        <field name="code">CGA-IE-HSE-RC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'RECIPES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_general_advertising1"
+            model="account.financial.html.report.line">
+        <field name="name">GENERAL ADVERTISING</field>
+        <field name="code">CGA-IE-HSE-GA</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'GENERAL ADVERTISING'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_total_export_mkt_expense1"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL EXPORT MKT EXPENSES</field>
+        <field name="code">CGA-IE-HSE-TEME</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL EXPORT MKT EXPENSES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+
+    <record id="account_financial_transport_industrial_marketing_expenses0"
+            model="account.financial.html.report.line">
+        <field name="name">INDUSTRIAL MARKETING EXPENSES</field>
+        <field name="code">CGA-IE-HSE-IME</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'INDUSTRIAL MARKETING EXPENSES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_total_industrial_mkt_exp_0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL INDUSTRIAL MKT EXP</field>
+        <field name="code">CGA-IE-HSE-TIME</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL INDUSTRIAL MKT EXP'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_gen_marketing_dept_0"
+            model="account.financial.html.report.line">
+        <field name="name">GEN. MARKETING DEPT.</field>
+        <field name="code">CGA-IE-HSE-GMD</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'GEN. MARKETING DEPT.'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_telephone_fax_1"
+            model="account.financial.html.report.line">
+        <field name="name">TELEPHONE FAX</field>
+        <field name="code">CGA-IE-HSE-TF</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TELEPHONE FAX'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_contract_labour_1"
+            model="account.financial.html.report.line">
+        <field name="name">CONTRACT LABOUR</field>
+        <field name="code">CGA-IE-HSE-CL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CONTRACT LABOUR'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_total_gen_mkt_dept_exp_1"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL GEN. MKT. DEPARTMENT EXP</field>
+        <field name="code">CGA-IE-HSE-TGMDE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL GEN. MKT. DEPARTMENT EXP'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_total_marketing_expenses_1"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL MARKETING EXPENSES</field>
+        <field name="code">CGA-IE-HSE-TME</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL MARKETING EXPENSES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_finance_dept_expense_1"
+            model="account.financial.html.report.line">
+        <field name="name">FINANCE DEPT. EXPENSES</field>
+        <field name="code">CGA-IE-HSE-FDE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'FINANCE DEPT. EXPENSES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_medical_1"
+            model="account.financial.html.report.line">
+        <field name="name">MEDICAL</field>
+        <field name="code">CGA-IE-HSE-ML</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'MEDICAL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_local_travel_sub_1"
+            model="account.financial.html.report.line">
+        <field name="name">LOCAL TRAVEL &amp; SUB.</field>
+        <field name="code">CGA-IE-HSE-LTS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LOCAL TRAVEL &amp; SUB.'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_printing_stationary_1"
+            model="account.financial.html.report.line">
+        <field name="name">PRINTING &amp; STATIONARY</field>
+        <field name="code">CGA-IE-HSE-PS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PRINTING &amp; STATIONARY'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_telephone_fax_e_mail_1"
+            model="account.financial.html.report.line">
+        <field name="name">TELEPHONE/FAX/E-MAIL</field>
+        <field name="code">CGA-IE-HSE-TFEM</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TELEPHONE/FAX/E-MAIL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_depreciation_property_1"
+            model="account.financial.html.report.line">
+        <field name="name">DEPRECIATION - PROPERTY</field>
+        <field name="code">CGA-IE-HSE-DEPR-P</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'DEPRECIATION - PROPERTY'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_depreciation_furniture_fix_1"
+            model="account.financial.html.report.line">
+        <field name="name">DEPRECIATION - FURNITURE &amp; FIX</field>
+        <field name="code">CGA-IE-HSE-DEPR-FF</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'DEPRECIATION - FURNITURE &amp; FIX'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_rep_maint_motor_vehicle_1"
+            model="account.financial.html.report.line">
+        <field name="name">REP . &amp; MAINT . MOTOR VEHICLE</field>
+        <field name="code">CGA-IE-HSE-RMMV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'REP . &amp; MAINT . MOTOR VEHICLE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_rep_maint_furniture_1"
+            model="account.financial.html.report.line">
+        <field name="name">REP. &amp; MAINT. FURNITURE &amp; FIXT</field>
+        <field name="code">CGA-IE-HSE-RMFF</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'REP. &amp; MAINT. FURNITURE &amp; FIXT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_gas_oil_1"
+            model="account.financial.html.report.line">
+        <field name="name">GAS &amp; OIL</field>
+        <field name="code">CGA-IE-HSE-GO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'GAS &amp; OIL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_rent_lease_property_1"
+            model="account.financial.html.report.line">
+        <field name="name">RENT &amp; LEASE PROPERTY</field>
+        <field name="code">CGA-IE-HSE-RLP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'RENT &amp; LEASE PROPERTY'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_audit_fees_1"
+            model="account.financial.html.report.line">
+        <field name="name">AUDIT FEES</field>
+        <field name="code">CGA-IE-HSE-AF</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'AUDIT FEES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_legal_professional_fees_1"
+            model="account.financial.html.report.line">
+        <field name="name">LEGAL &amp; PROFESSIONAL FEES</field>
+        <field name="code">CGA-IE-HSE-LPF</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LEGAL &amp; PROFESSIONAL FEES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_data_processing_1"
+            model="account.financial.html.report.line">
+        <field name="name">DATA PROCESSING</field>
+        <field name="code">CGA-IE-HSE-DP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'DATA PROCESSING'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_interest_on_loan_1"
+            model="account.financial.html.report.line">
+        <field name="name">INTEREST ON LOAN</field>
+        <field name="code">CGA-IE-HSE-IL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'INTEREST ON LOAN'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_interest_on_overdraft_1"
+            model="account.financial.html.report.line">
+        <field name="name">INTEREST ON OVERDRAFT</field>
+        <field name="code">CGA-IE-HSE-IO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'INTEREST ON OVERDRAFT'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_bank_charges_1"
+            model="account.financial.html.report.line">
+        <field name="name">BANK CHARGES</field>
+        <field name="code">CGA-IE-HSE-BCH</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'BANK CHARGES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_charity_donation_1"
+            model="account.financial.html.report.line">
+        <field name="name">CHARITIES &amp; DONATIONS</field>
+        <field name="code">CGA-IE-HSE-CD</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CHARITIES &amp; DONATIONS'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_corporate_expenses_1"
+            model="account.financial.html.report.line">
+        <field name="name">CORPORATE EXPENSES</field>
+        <field name="code">CGA-IE-HSE-CE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CORPORATE EXPENSES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_insurance_1"
+            model="account.financial.html.report.line">
+        <field name="name">INSURANCE</field>
+        <field name="code">CGA-IE-HSE-INS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'INSURANCE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_total_finance_expenses_1"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL FINANCE EXPENSES</field>
+        <field name="code">CGA-IE-HSE-TFE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL FINANCE EXPENSES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_human_resources_1"
+            model="account.financial.html.report.line">
+        <field name="name">HUMAN RESOURCES</field>
+        <field name="code">CGA-IE-HSE-HR</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'HUMAN RESOURCES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_local_travel_1"
+            model="account.financial.html.report.line">
+        <field name="name">LOCAL TRAVEL</field>
+        <field name="code">CGA-IE-HSE-LT</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LOCAL TRAVEL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_staff_appreciation_1"
+            model="account.financial.html.report.line">
+        <field name="name">STAFF APPRECIATION</field>
+        <field name="code">CGA-IE-HSE-SA</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', '>STAFF APPRECIATION'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_customs_service_2"
+            model="account.financial.html.report.line">
+        <field name="name">CUSTOMS SERVICE</field>
+        <field name="code">CGA-IE-HSE-CS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CUSTOMS SERVICE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_total_procument_expenses_3"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL PROCUMENT EXPENSES</field>
+        <field name="code">CGA-IE-HSE-TPE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL PROCUMENT EXPENSES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_total_dept_expenses_3"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL DEPARTMENT EXPENSES</field>
+        <field name="code">CGA-IE-HSE-TDE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL DEPARTMENT EXPENSES'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_transport_profit_loss_before_tax_3"
+            model="account.financial.html.report.line">
+        <field name="name">PROFIT (LOSS) BEFORE TAX</field>
+        <field name="code">CGA-IE-HSE-PLBT</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_income_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PROFIT (LOSS) BEFORE TAX'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+
+    <record id="action_account_report_cga" model="ir.actions.client">
+        <field name="name">CGA Income and Expenditure</field>
+        <field name="tag">account_report</field>
+        <field name="context"
+               eval="{'model': 'account.financial.html.report', 'id': ref('account_financial_report_cga0')}"/>
+    </record>
+
+</data>

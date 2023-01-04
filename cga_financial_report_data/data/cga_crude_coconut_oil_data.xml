@@ -1,0 +1,1371 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <record id="account_financial_report_division5"
+            model="account.financial.html.report">
+        <field name="name">Crude Coconut Oil</field>
+        <field name="analytic" eval="True"/>
+        <field name="unfold_all_filter" eval="True"/>
+        <field name="show_journal_filter" eval="True"/>
+        <field name='parent_id'
+               ref='account.account_reports_legal_statements_menu'/>
+    </record>
+
+    <record id="account_financial_report_crude_coconut_oil_sales0"
+            model="account.financial.html.report.line">
+        <field name="name">** SALES **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division5"/>
+        <field name="code">CCO-SALES</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_local_sales0"
+            model="account.financial.html.report.line">
+        <field name="name">LOCAL SALES</field>
+        <field name="code">CCO-SALES-LS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_sales0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LOCAL SALES'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_export_sales0"
+            model="account.financial.html.report.line">
+        <field name="name">EXPORT SALES</field>
+        <field name="code">CCO-SALES-ES</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_sales0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EXPORT SALES'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_total_income0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL INCOME</field>
+        <field name="code">CCO-SALES-TI</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_sales0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL INCOME'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_crude_coconut_oil_less0"
+            model="account.financial.html.report.line">
+        <field name="name">** LESS **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division5"/>
+        <field name="code">CCO-LESS</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record id="account_financial_report_crude_coconut_oil_cost_sales_local0"
+            model="account.financial.html.report.line">
+        <field name="name">COST OF SALES LOCAL</field>
+        <field name="code">CCO-LESS-CSL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'COST OF SALES LOCAL'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_crude_coconut_oil_cost_sales_export0"
+            model="account.financial.html.report.line">
+        <field name="name">COST OF SALES EXPORT</field>
+        <field name="code">CCO-LESS-CSE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'COST OF SALES EXPORT'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_crude_coconut_oil_gross_profit0"
+            model="account.financial.html.report.line">
+        <field name="name">GROSS PROFIT</field>
+        <field name="code">CCO-LESS-GP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'GROSS PROFIT'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_raw_material_consumed_act0"
+            model="account.financial.html.report.line">
+        <field name="name">RAW MATERIAL CONSUMED - ACT</field>
+        <field name="code">CCO-LESS-RMCA</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'RAW MATERIAL CONSUMED - ACT'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_total_material0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL MATERIAL</field>
+        <field name="code">CCO-LESS-TM</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL MATERIAL'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_ppv0"
+            model="account.financial.html.report.line">
+        <field name="name">PPV</field>
+        <field name="code">CCO-LESS-PPV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PPV'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_cost_adjustment0"
+            model="account.financial.html.report.line">
+        <field name="name">COST ADJUSTMENT</field>
+        <field name="code">CCO-LESS-CA</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'COST ADJUSTMENT'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_pack_mat_consumed_act0"
+            model="account.financial.html.report.line">
+        <field name="name">PACK. MAT. CONSUMED - ACT</field>
+        <field name="code">CCO-LESS-PMCA</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PACK. MAT. CONSUMED - ACT'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_total_packaging0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL PACKAGING</field>
+        <field name="code">CCO-LESS-TP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL PACKAGING'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_direct_labour_act0"
+            model="account.financial.html.report.line">
+        <field name="name">DIRECT LABOUR-ACT</field>
+        <field name="code">CCO-LESS-DLA</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'DIRECT LABOUR-ACT'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_contract_labour_act0"
+            model="account.financial.html.report.line">
+        <field name="name">CONTRACT LABOUR-ACT</field>
+        <field name="code">CCO-LESS-CLA</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CONTRACT LABOUR-ACT'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_actual_direct_overheads0"
+            model="account.financial.html.report.line">
+        <field name="name">ACTUAL DIRECT OVERHEADS</field>
+        <field name="code">CCO-LESS-ADO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'ACTUAL DIRECT OVERHEADS'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_crude_coconut_oil_depreciation0"
+            model="account.financial.html.report.line">
+        <field name="name">** DEPRECIATION **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division5"/>
+        <field name="code">CCO-DEPR</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_property0"
+            model="account.financial.html.report.line">
+        <field name="name">PROPERTY</field>
+        <field name="code">CCO-DEPR-PY</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PROPERTY'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_plant_equipment0"
+            model="account.financial.html.report.line">
+        <field name="name">PLANT &amp; EQUIPMENT</field>
+        <field name="code">CCO-DEPR-PE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PLANT &amp; EQUIPMENT'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_lab_equipment0"
+            model="account.financial.html.report.line">
+        <field name="name">LAB EQUIPMENT</field>
+        <field name="code">CCO-DEPR-LE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LAB EQUIPMENT'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_motor_vehicle0"
+            model="account.financial.html.report.line">
+        <field name="name">MOTOR VEHICLE</field>
+        <field name="code">CCO-DEPR-MV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'MOTOR VEHICLE'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_furniture_equipment0"
+            model="account.financial.html.report.line">
+        <field name="name">FURNITURE &amp; EQUIPMENT</field>
+        <field name="code">CCO-DEPR-FE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'FURNITURE &amp; EQUIPMENT'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_crude_coconut_oil_repairs_maintaince0"
+            model="account.financial.html.report.line">
+        <field name="name">** REPAIRS &amp; MAINTAINCE **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division5"/>
+        <field name="code">CCO-RM</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_property1"
+            model="account.financial.html.report.line">
+        <field name="name">PROPERTY</field>
+        <field name="code">CCO-RM-PY</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_repairs_maintaince0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PROPERTY'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_plant_equipment1"
+            model="account.financial.html.report.line">
+        <field name="name">PLANT &amp; EQUIPMENT</field>
+        <field name="code">CCO-RM-PE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_repairs_maintaince0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PLANT &amp; EQUIPMENT'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_lab_equipment1"
+            model="account.financial.html.report.line">
+        <field name="name">LAB EQUIPMENT</field>
+        <field name="code">CCO-RM-LE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_repairs_maintaince0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LAB EQUIPMENT'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_motor_vehicle1"
+            model="account.financial.html.report.line">
+        <field name="name">MOTOR VEHICLE</field>
+        <field name="code">CCO-RM-MV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_repairs_maintaince0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'MOTOR VEHICLE'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_furniture_equipment1"
+            model="account.financial.html.report.line">
+        <field name="name">FURNITURE &amp; EQUIPMENT</field>
+        <field name="code">CCO-RM-FE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_repairs_maintaince0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'FURNITURE &amp; EQUIPMENT'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_rep_main_fur_fix1"
+            model="account.financial.html.report.line">
+        <field name="name">REP. &amp; MAINT. FUR/FIX</field>
+        <field name="code">CCO-RM-RMFF</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_repairs_maintaince0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'REP. &amp; MAINT. FUR/FIX'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_insurance1"
+            model="account.financial.html.report.line">
+        <field name="name">INSURANCE</field>
+        <field name="code">CCO-RM-IN</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_repairs_maintaince0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'INSURANCE'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_crude_coconut_oil_production0"
+            model="account.financial.html.report.line">
+        <field name="name">** PRODUCTION **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division5"/>
+        <field name="code">CCO-PROD</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_nis_0"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">CCO-RM-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_production0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_crude_coconut_oil_engineering0"
+            model="account.financial.html.report.line">
+        <field name="name">** ENGINEERING **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division5"/>
+        <field name="code">CCO-ENG</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_total_direct_overheads0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL DIRECT OVERHEADS</field>
+        <field name="code">CCO-ENG-TDO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL DIRECT OVERHEADS'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_total_direct_cost0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL DIRECT COST</field>
+        <field name="code">CCO-ENG-TDC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL DIRECT COST'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_crude_coconut_oil_indirect_overheads0"
+            model="account.financial.html.report.line">
+        <field name="name">** INDIRECT OVERHEADS **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division5"/>
+        <field name="code">CCO-IO</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_electricity0"
+            model="account.financial.html.report.line">
+        <field name="name">ELECTRICITY</field>
+        <field name="code">CCO-IO-EY</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'ELECTRICITY'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_fuel0"
+            model="account.financial.html.report.line">
+        <field name="name">FUEL</field>
+        <field name="code">CCO-IO-FL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'FUEL'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_water0"
+            model="account.financial.html.report.line">
+        <field name="name">WATER</field>
+        <field name="code">CCO-IO-WR</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'WATER'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_gas_oil0"
+            model="account.financial.html.report.line">
+        <field name="name">GAS &amp; OIL</field>
+        <field name="code">CCO-IO-GO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'GAS &amp; OIL'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_cleaning0"
+            model="account.financial.html.report.line">
+        <field name="name">CLEANING</field>
+        <field name="code">CCO-IO-CG</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CLEANING'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_operational_supplies0"
+            model="account.financial.html.report.line">
+        <field name="name">OPERATIONAL SUPPLIES</field>
+        <field name="code">CCO-IO-OS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'OPERATIONAL SUPPLIES'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_private_jobs0"
+            model="account.financial.html.report.line">
+        <field name="name">PRIVATE JOBS</field>
+        <field name="code">CCO-IO-PJ</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PRIVATE JOBS'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_q_a_consumables0"
+            model="account.financial.html.report.line">
+        <field name="name">Q&amp;A CONSUMABLES</field>
+        <field name="code">CCO-IO-QAC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'Q&amp;A CONSUMABLES'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_indirect_overheads_production0"
+            model="account.financial.html.report.line">
+        <field name="name">** PRODUCTION **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division5"/>
+        <field name="code">CCO-IO-PROD</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_salaries0"
+            model="account.financial.html.report.line">
+        <field name="name">SALARIES</field>
+        <field name="code">CCO-IO-PROD-SY</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads_production0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'SALARIES'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_nis0"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">CCO-IO-PROD-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads_production0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_uniforms0"
+            model="account.financial.html.report.line">
+        <field name="name">UNIFORMS</field>
+        <field name="code">CCO-IO-PROD-US</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads_production0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'UNIFORMS'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_contract_labour0"
+            model="account.financial.html.report.line">
+        <field name="name">CONTRACT LABOUR</field>
+        <field name="code">CCO-IO-PROD-CL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads_production0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CONTRACT LABOUR'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_cleaning1"
+            model="account.financial.html.report.line">
+        <field name="name">CLEANING</field>
+        <field name="code">CCO-IO-PROD-CG</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads_production0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CLEANING'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_indirect_overheads_engineering0"
+            model="account.financial.html.report.line">
+        <field name="name">** ENGINEERING **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division5"/>
+        <field name="code">CCO-IO-ENG</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_salaries1"
+            model="account.financial.html.report.line">
+        <field name="name">SALARIES</field>
+        <field name="code">CCO-IO-ENG-SL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'SALARIES'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_wages1"
+            model="account.financial.html.report.line">
+        <field name="name">WAGES</field>
+        <field name="code">CCO-IO-ENG-WS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'WAGES'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_nis1"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">CCO-IO-ENG-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_uniforms1"
+            model="account.financial.html.report.line">
+        <field name="name">UNIFORMS</field>
+        <field name="code">CCO-IO-ENG-US</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'UNIFORMS'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_contract_labour1"
+            model="account.financial.html.report.line">
+        <field name="name">CONTRACT LABOUR</field>
+        <field name="code">CCO-IO-ENG-CL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CONTRACT LABOUR'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_operational_supply1"
+            model="account.financial.html.report.line">
+        <field name="name">OPERATIONAL SUPPLIES</field>
+        <field name="code">CCO-IO-ENG-OS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'OPERATIONAL SUPPLIES'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_cleaning2"
+            model="account.financial.html.report.line">
+        <field name="name">CLEANING</field>
+        <field name="code">CCO-IO-ENG-CG</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CLEANING'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_private_jobs2"
+            model="account.financial.html.report.line">
+        <field name="name">PRIVATE JOBS</field>
+        <field name="code">CCO-IO-ENG-PJ</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_indirect_overheads_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PRIVATE JOBS'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_research_development0"
+            model="account.financial.html.report.line">
+        <field name="name">** RESEARCH &amp; DEVELOPMENT **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division5"/>
+        <field name="code">CCO-RD</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_nis2"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">CCO-RD-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_research_development0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_warehousing0"
+            model="account.financial.html.report.line">
+        <field name="name">** WAREHOUSING **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division5"/>
+        <field name="code">CCO-WH</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_salaries2"
+            model="account.financial.html.report.line">
+        <field name="name">SALARIES</field>
+        <field name="code">CCO-WH-SL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'SALARIES'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_wages2"
+            model="account.financial.html.report.line">
+        <field name="name">WAGES</field>
+        <field name="code">CCO-WH-WS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'WAGES'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_nis_2"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">CCO-WH-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_contract_labour_2"
+            model="account.financial.html.report.line">
+        <field name="name">CONTRACT LABOUR</field>
+        <field name="code">CCO-WH-CL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CONTRACT LABOUR'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_q_a0"
+            model="account.financial.html.report.line">
+        <field name="name">** Q &amp; A **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division5"/>
+        <field name="code">CCO-QA</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_salaries_2"
+            model="account.financial.html.report.line">
+        <field name="name">SALARIES</field>
+        <field name="code">CCO-QA-SL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_q_a0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'SALARIES'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_nis3"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">CCO-QA-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_q_a0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_local_travel_subsistence3"
+            model="account.financial.html.report.line">
+        <field name="name">LOCAL TRAVEL &amp; SUBSISTENCE</field>
+        <field name="code">CCO-QA-LTS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_q_a0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LOCAL TRAVEL &amp; SUBSISTENCE'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_contract_labour3"
+            model="account.financial.html.report.line">
+        <field name="name">CONTRACT LABOUR</field>
+        <field name="code">CCO-QA-CL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_q_a0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CONTRACT LABOUR'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_hse0"
+            model="account.financial.html.report.line">
+        <field name="name">** HSE **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division5"/>
+        <field name="code">CCO-HSE</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_nis_3"
+            model="account.financial.html.report.line">
+        <field name="name">NIS</field>
+        <field name="code">CCO-HSE-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'NIS'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_education_training_3"
+            model="account.financial.html.report.line">
+        <field name="name">EDUCATION &amp; TRAINING</field>
+        <field name="code">CCO-HSE-ET</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EDUCATION &amp; TRAINING'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_general_expense_3"
+            model="account.financial.html.report.line">
+        <field name="name">GENERAL EXPENSE</field>
+        <field name="code">CCO-HSE-GE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'GENERAL EXPENSE'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_pest_control_3"
+            model="account.financial.html.report.line">
+        <field name="name">PEST CONTROL</field>
+        <field name="code">CCO-HSE-PC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PEST CONTROL'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_telephone_3"
+            model="account.financial.html.report.line">
+        <field name="name">TELEPHONE</field>
+        <field name="code">CCO-HSE-TP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TELEPHONE'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_courier_3"
+            model="account.financial.html.report.line">
+        <field name="name">COURIER</field>
+        <field name="code">CCO-HSE-CR</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'COURIER'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_operational_supplies_3"
+            model="account.financial.html.report.line">
+        <field name="name">OPERATIONAL SUPPLIES</field>
+        <field name="code">CCO-HSE-OS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'OPERATIONAL SUPPLIES'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_cleaning_3"
+            model="account.financial.html.report.line">
+        <field name="name">CLEANING</field>
+        <field name="code">CCO-HSE-CG</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CLEANING'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_private_jobs_3"
+            model="account.financial.html.report.line">
+        <field name="name">PRIVATE JOBS</field>
+        <field name="code">CCO-HSE-PJ</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PRIVATE JOBS'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_environmental_expense_3"
+            model="account.financial.html.report.line">
+        <field name="name">ENVIRONMENTAL EXPENSES</field>
+        <field name="code">CCO-HSE-EE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'ENVIRONMENTAL EXPENSES'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_internal_security_3"
+            model="account.financial.html.report.line">
+        <field name="name">INTERNAL SECURITY</field>
+        <field name="code">CCO-HSE-IS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'INTERNAL SECURITY'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_external_security_3"
+            model="account.financial.html.report.line">
+        <field name="name">EXTERNAL SECURITY</field>
+        <field name="code">CCO-HSE-ES</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EXTERNAL SECURITY'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_total_indirect_overheads_3"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL INDIRECT OVERHEADS</field>
+        <field name="code">CCO-HSE-TIO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL INDIRECT OVERHEADS'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_total_indirect_costs_3"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL INDIRECT &amp; COSTS</field>
+        <field name="code">CCO-HSE-TIC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL INDIRECT &amp; COSTS'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_total_variance_3"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL VARIANCE</field>
+        <field name="code">CCO-HSE-TV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL VARIANCE'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_crude_coconut_oil_net_gross_profit_3"
+            model="account.financial.html.report.line">
+        <field name="name">NET GROSS PROFIT</field>
+        <field name="code">CCO-HSE-NGP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_crude_coconut_oil_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'NET GROSS PROFIT'),('account_id.div_id.name', '=', 'CRUDE COCONUT OIL'),('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+
+    <record id="action_account_report_crude_coconut_oil_division"
+            model="ir.actions.client">
+        <field name="name">Crude Coconut Oil</field>
+        <field name="tag">account_report</field>
+        <field name="context"
+               eval="{'model': 'account.financial.html.report', 'id': ref('account_financial_report_division5')}"/>
+    </record>
+
+</data>

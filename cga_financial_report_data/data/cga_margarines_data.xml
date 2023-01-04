@@ -1,0 +1,1551 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <record id="account_financial_report_division4"
+            model="account.financial.html.report">
+        <field name="name">Margarine</field>
+        <field name="analytic" eval="True"/>
+        <field name="unfold_all_filter" eval="True"/>
+        <field name="show_journal_filter" eval="True"/>
+        <field name='parent_id'
+               ref='account.account_reports_legal_statements_menu'/>
+    </record>
+
+    <record id="account_financial_report_margarine_sales0"
+            model="account.financial.html.report.line">
+        <field name="name">** SALES **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division4"/>
+        <field name="code">MAR-SALES</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_local_sales0"
+            model="account.financial.html.report.line">
+        <field name="name">LOCAL SALES</field>
+        <field name="code">MAR-SALES-LS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_sales0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LOCAL SALES'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_export_sales0"
+            model="account.financial.html.report.line">
+        <field name="name">EXPORT SALES</field>
+        <field name="code">MAR-SALES-ES</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_sales0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EXPORT SALES'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_total_income0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL INCOME</field>
+        <field name="code">MAR-SALES-TI</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_sales0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL INCOME'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_margarine_less0"
+            model="account.financial.html.report.line">
+        <field name="name">** LESS **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division4"/>
+        <field name="code">MAR-LESS</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_cost_sales_local0"
+            model="account.financial.html.report.line">
+        <field name="name">COST OF SALES LOCAL</field>
+        <field name="code">MAR-LESS-CSL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'COST OF SALES LOCAL'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_cost_sales_export0"
+            model="account.financial.html.report.line">
+        <field name="name">COST OF SALES EXPORT</field>
+        <field name="code">MAR-LESS-CSE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'COST OF SALES EXPORT'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_gross_profit0"
+            model="account.financial.html.report.line">
+        <field name="name">GROSS PROFIT</field>
+        <field name="code">MAR-LESS-GP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'GROSS PROFIT'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_raw_material_consumed_act0"
+            model="account.financial.html.report.line">
+        <field name="name">RAW MATERIAL CONSUMED-ACT</field>
+        <field name="code">MAR-LESS-RMCA</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'RAW MATERIAL CONSUMED-ACT'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_total_material0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL MATERIAL</field>
+        <field name="code">MAR-LESS-TM</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL MATERIAL'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_ppv0"
+            model="account.financial.html.report.line">
+        <field name="name">PPV</field>
+        <field name="code">MAR-LESS-PPV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PPV'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_ppv0"
+            model="account.financial.html.report.line">
+        <field name="name">COST ADJUSTMENT</field>
+        <field name="code">MAR-LESS-PPV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'COST ADJUSTMENT'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_pack_mat_consumed_act0"
+            model="account.financial.html.report.line">
+        <field name="name">PACK. MAT. CONSUMED-ACT</field>
+        <field name="code">MAR-LESS-PMCA</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PACK. MAT. CONSUMED-ACT'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_total_material0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL MATERIAL</field>
+        <field name="code">MAR-LESS-TM</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL MATERIAL'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_operational_supplies0"
+            model="account.financial.html.report.line">
+        <field name="name">OPERATIONAL SUPPLIES</field>
+        <field name="code">MAR-LESS-OS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'OPERATIONAL SUPPLIES'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_direct_labour_act0"
+            model="account.financial.html.report.line">
+        <field name="name">DIRECT LABOUR-ACT</field>
+        <field name="code">MAR-LESS-DLA</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'DIRECT LABOUR-ACT'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_direct_labour_act0"
+            model="account.financial.html.report.line">
+        <field name="name">DIRECT ACTUAL OVERHEADS</field>
+        <field name="code">MAR-LESS-DAO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_less0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'DIRECT ACTUAL OVERHEADS'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_margarine_depreciation0"
+            model="account.financial.html.report.line">
+        <field name="name">** DEPRECIATION **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division4"/>
+        <field name="code">MAR-DEPR</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_property0"
+            model="account.financial.html.report.line">
+        <field name="name">PROPERTY</field>
+        <field name="code">MAR-DEPR-PY</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PROPERTY'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_plant_equipment0"
+            model="account.financial.html.report.line">
+        <field name="name">PLANT &amp; EQUIPMENT</field>
+        <field name="code">MAR-DEPR-PE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PLANT &amp; EQUIPMENT'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_lab_equipment0"
+            model="account.financial.html.report.line">
+        <field name="name">LAB EQUIPMENT</field>
+        <field name="code">MAR-DEPR-LE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LAB EQUIPMENT'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_motor_vehicle0"
+            model="account.financial.html.report.line">
+        <field name="name">MOTOR VEHICLE</field>
+        <field name="code">MAR-DEPR-MV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'MOTOR VEHICLE'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_furniture_equipment0"
+            model="account.financial.html.report.line">
+        <field name="name">FURNITURE &amp; EQUIPMENT</field>
+        <field name="code">MAR-DEPR-FE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_depreciation0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'FURNITURE &amp; EQUIPMENT'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_margarine_repairs_maintaince0"
+            model="account.financial.html.report.line">
+        <field name="name">** REPAIRS &amp; MAINTAINCE **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division4"/>
+        <field name="code">MAR-RM</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_property1"
+            model="account.financial.html.report.line">
+        <field name="name">PROPERTY</field>
+        <field name="code">MAR-RM-PY</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_repairs_maintaince0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PROPERTY'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_plant_equipment1"
+            model="account.financial.html.report.line">
+        <field name="name">PLANT &amp; EQUIPMENT</field>
+        <field name="code">MAR-RM-PE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_repairs_maintaince0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PLANT &amp; EQUIPMENT'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_lab_equipment1"
+            model="account.financial.html.report.line">
+        <field name="name">LAB EQUIPMENT</field>
+        <field name="code">MAR-RM-LE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_repairs_maintaince0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LAB EQUIPMENT'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_motor_vehicle1"
+            model="account.financial.html.report.line">
+        <field name="name">MOTOR VEHICLE</field>
+        <field name="code">MAR-RM-MV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_repairs_maintaince0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'MOTOR VEHICLE'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_furniture_equipment1"
+            model="account.financial.html.report.line">
+        <field name="name">FURNITURE &amp; EQUIPMENT</field>
+        <field name="code">MAR-RM-FE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_repairs_maintaince0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'FURNITURE &amp; EQUIPMENT'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_rep_maint_fur_fix0"
+            model="account.financial.html.report.line">
+        <field name="name">REP. &amp; MAINT. FUR/FIX</field>
+        <field name="code">MAR-RM-RMFF</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_repairs_maintaince0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'REP. &amp; MAINT. FUR/FIX'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_insurance0"
+            model="account.financial.html.report.line">
+        <field name="name">INSURANCE</field>
+        <field name="code">MAR-RM-IN</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_repairs_maintaince0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'INSURANCE'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_margarine_production0"
+            model="account.financial.html.report.line">
+        <field name="name">** PRODUCTION **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division4"/>
+        <field name="code">MAR-PROD</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_n_i_s0"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">MAR-PROD-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_production0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_margarine_engineering0"
+            model="account.financial.html.report.line">
+        <field name="name">** ENGINEERING **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division4"/>
+        <field name="code">MAR-ENG</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_total_direct_overheads0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL DIRECT OVERHEADS</field>
+        <field name="code">MAR-ENG-TDO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL DIRECT OVERHEADS'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_total_direct_cost0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL DIRECT COST</field>
+        <field name="code">MAR-ENG-TDC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL DIRECT COST'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_margarine_indirect_overheads0"
+            model="account.financial.html.report.line">
+        <field name="name">** INDIRECT OVERHEADS **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division4"/>
+        <field name="code">MAR-IO</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_electricity0"
+            model="account.financial.html.report.line">
+        <field name="name">ELECTRICITY</field>
+        <field name="code">MAR-IO-EY</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'ELECTRICITY'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_fuel0"
+            model="account.financial.html.report.line">
+        <field name="name">FUEL</field>
+        <field name="code">MAR-IO-FL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'FUEL'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_water0"
+            model="account.financial.html.report.line">
+        <field name="name">WATER</field>
+        <field name="code">MAR-IO-WR</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'WATER'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_rent_lease_property0"
+            model="account.financial.html.report.line">
+        <field name="name">RENT &amp; LEASE PROPERTY</field>
+        <field name="code">MAR-IO-RLP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'RENT &amp; LEASE PROPERTY'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_gas_oil0"
+            model="account.financial.html.report.line">
+        <field name="name">GAS &amp; OIL</field>
+        <field name="code">MAR-IO-GO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'GAS &amp; OIL'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_cleaning0"
+            model="account.financial.html.report.line">
+        <field name="name">CLEANING</field>
+        <field name="code">MAR-IO-CL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CLEANING'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_operational_supplies1"
+            model="account.financial.html.report.line">
+        <field name="name">OPERATIONAL SUPPLIES</field>
+        <field name="code">MAR-IO-OS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'OPERATIONAL SUPPLIES'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_private_jobs0"
+            model="account.financial.html.report.line">
+        <field name="name">PRIVATE JOBS</field>
+        <field name="code">MAR-IO-PJ</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_overheads0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PRIVATE JOBS'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_margarine_indirect_production0"
+            model="account.financial.html.report.line">
+        <field name="name">** PRODUCTION **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division4"/>
+        <field name="code">MAR-IO-PROD</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_salaries0"
+            model="account.financial.html.report.line">
+        <field name="name">SALARIES</field>
+        <field name="code">MAR-IO-PROD-SA</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_production0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'SALARIES'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_n_i_s1"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">MAR-IO-PROD-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_production0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_education_training0"
+            model="account.financial.html.report.line">
+        <field name="name">EDUCATION &amp; TRAINING</field>
+        <field name="code">MAR-IO-PROD-ET</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_production0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EDUCATION &amp; TRAINING'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_contract_labour0"
+            model="account.financial.html.report.line">
+        <field name="name">CONTRACT LABOUR</field>
+        <field name="code">MAR-IO-PROD-CL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_production0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CONTRACT LABOUR'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_operational_supplies2"
+            model="account.financial.html.report.line">
+        <field name="name">OPERATIONAL SUPPLIES</field>
+        <field name="code">MAR-IO-PROD-OS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_production0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'OPERATIONAL SUPPLIES'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_cleaning1"
+            model="account.financial.html.report.line">
+        <field name="name">CLEANING</field>
+        <field name="code">MAR-IO-PROD-CG</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_production0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CLEANING'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_private_jobs1"
+            model="account.financial.html.report.line">
+        <field name="name">PRIVATE JOBS</field>
+        <field name="code">MAR-IO-PROD-PJ</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_production0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PRIVATE JOBS'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_vehicle_gas_oil0"
+            model="account.financial.html.report.line">
+        <field name="name">VEHICLE GAS &amp; OIL</field>
+        <field name="code">MAR-IO-PROD-VGO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_production0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'VEHICLE GAS &amp; OIL'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record id="account_financial_report_margarine_indirect_engineering0"
+            model="account.financial.html.report.line">
+        <field name="name">** ENGINEERING **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division4"/>
+        <field name="code">MAR-IO-ENG</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_salaries1"
+            model="account.financial.html.report.line">
+        <field name="name">SALARIES</field>
+        <field name="code">MAR-IO-ENG-SL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'SALARIES'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_wages0"
+            model="account.financial.html.report.line">
+        <field name="name">WAGES</field>
+        <field name="code">MAR-IO-ENG-WS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'WAGES'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_n_i_s2"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">MAR-IO-ENG-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_uniforms0"
+            model="account.financial.html.report.line">
+        <field name="name">UNIFORMS</field>
+        <field name="code">MAR-IO-ENG-US</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'UNIFORMS'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_contract_labour1"
+            model="account.financial.html.report.line">
+        <field name="name">CONTRACT LABOUR</field>
+        <field name="code">MAR-IO-ENG-CL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CONTRACT LABOUR'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_courier1"
+            model="account.financial.html.report.line">
+        <field name="name">COURIER</field>
+        <field name="code">MAR-IO-ENG-CR</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'COURIER'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_operational_supplies3"
+            model="account.financial.html.report.line">
+        <field name="name">OPERATIONAL SUPPLIES</field>
+        <field name="code">MAR-IO-ENG-OS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'OPERATIONAL SUPPLIES'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_cleaning2"
+            model="account.financial.html.report.line">
+        <field name="name">CLEANING</field>
+        <field name="code">MAR-IO-ENG-CG</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CLEANING'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_private_jobs2"
+            model="account.financial.html.report.line">
+        <field name="name">PRIVATE JOBS</field>
+        <field name="code">MAR-IO-ENG-PJ</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PRIVATE JOBS'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_vehicle_gas_oil1"
+            model="account.financial.html.report.line">
+        <field name="name">VEHICLE GAS &amp; OIL</field>
+        <field name="code">MAR-IO-ENG-VGO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_engineering0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'VEHICLE GAS &amp; OIL'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_indirect_research_development0"
+            model="account.financial.html.report.line">
+        <field name="name">** RESEARCH &amp; DEVELOPMENT **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division4"/>
+        <field name="code">MAR-RD</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_n_i_s3"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">MAR-RD-MIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_indirect_research_development0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_warehousing0"
+            model="account.financial.html.report.line">
+        <field name="name">** WAREHOUSING **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division4"/>
+        <field name="code">MAR-WH</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_salaries2"
+            model="account.financial.html.report.line">
+        <field name="name">SALARIES</field>
+        <field name="code">MAR-RD-SL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'SALARIES'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_wages1"
+            model="account.financial.html.report.line">
+        <field name="name">WAGES</field>
+        <field name="code">MAR-RD-WS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'WAGES'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_n_i_s4"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">MAR-RD-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_education_training1"
+            model="account.financial.html.report.line">
+        <field name="name">EDUCATION &amp; TRAINING</field>
+        <field name="code">MAR-RD-ET</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EDUCATION &amp; TRAINING'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_general_expense1"
+            model="account.financial.html.report.line">
+        <field name="name">GENERAL EXPENSES</field>
+        <field name="code">MAR-RD-GE</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'GENERAL EXPENSE'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_trans_delivery_kfc0"
+            model="account.financial.html.report.line">
+        <field name="name">TRANS &amp; DELIVERY KFC</field>
+        <field name="code">MAR-RD-TDKFC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TRANS &amp; DELIVERY KFC'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_trans_delivery_industrial0"
+            model="account.financial.html.report.line">
+        <field name="name">TRANS &amp; DELIVERY INDUSTRIAL</field>
+        <field name="code">MAR-RD-TDKFI</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TRANS &amp; DELIVERY INDUSTRIAL'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_trans_delivery_contract0"
+            model="account.financial.html.report.line">
+        <field name="name">TRANS &amp; DELIVERY CONTRACT</field>
+        <field name="code">MAR-RD-TDC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TRANS &amp; DELIVERY CONTRACT'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_rentals_warehouse0"
+            model="account.financial.html.report.line">
+        <field name="name">RENTALS (WAREHOUSE)</field>
+        <field name="code">MAR-RD-RW</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'RENTALS(WAREHOUSE)'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_telephone0"
+            model="account.financial.html.report.line">
+        <field name="name">TELEPHONE</field>
+        <field name="code">MAR-RD-TP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TELEPHONE'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_vehicle_gas_oil2"
+            model="account.financial.html.report.line">
+        <field name="name">VEHICLE GAS &amp; OIL</field>
+        <field name="code">MAR-RD-VGO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_warehousing0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'VEHICLE GAS &amp; OIL'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_qa0"
+            model="account.financial.html.report.line">
+        <field name="name">** Q &amp; A **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division4"/>
+        <field name="code">MAR-QA</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_salaries3"
+            model="account.financial.html.report.line">
+        <field name="name">SALARIES</field>
+        <field name="code">MAR-QA-SL</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_qa0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'SALARIES'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_n_i_s5"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">MAR-QA-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_qa0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_local_travel_subsistence0"
+            model="account.financial.html.report.line">
+        <field name="name">LOCAL TRAVEL &amp; SUBSISTENCE</field>
+        <field name="code">MAR-QA-LTS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_qa0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LOCAL TRAVEL &amp; SUBSISTENCE'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_education_training2"
+            model="account.financial.html.report.line">
+        <field name="name">EDUCATION &amp; TRAINING</field>
+        <field name="code">MAR-QA-ET</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_qa0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EDUCATION &amp; TRAINING'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_vehicle_gas_oil3"
+            model="account.financial.html.report.line">
+        <field name="name">VEHICLE GAS &amp; OIL</field>
+        <field name="code">MAR-QA-VGO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_qa0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'VEHICLE GAS &amp; OIL'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_hse0"
+            model="account.financial.html.report.line">
+        <field name="name">** HSE **</field>
+        <field name="financial_report_id"
+               ref="account_financial_report_division4"/>
+        <field name="code">MAR-HSE</field>
+        <field name="sequence" eval="3"/>
+        <field name="level" eval="0"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_salaries4"
+            model="account.financial.html.report.line">
+        <field name="name">SALARIES</field>
+        <field name="code">MAR-HSE-SY</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'SALARIES'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_salaries4"
+            model="account.financial.html.report.line">
+        <field name="name">N.I.S</field>
+        <field name="code">MAR-HSE-NIS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'N.I.S'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_local_travel_subsistence1"
+            model="account.financial.html.report.line">
+        <field name="name">LOCAL TRAVEL &amp; SUBSISTENCE</field>
+        <field name="code">MAR-HSE-LTS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'LOCAL TRAVEL &amp; SUBSISTENCE'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_education_training3"
+            model="account.financial.html.report.line">
+        <field name="name">EDUCATION &amp; TRAINING</field>
+        <field name="code">MAR-HSE-ET</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EDUCATION &amp; TRAINING'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_pest_control1"
+            model="account.financial.html.report.line">
+        <field name="name">PEST CONTROL</field>
+        <field name="code">MAR-HSE-PC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'PEST CONTROL'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_internal_security0"
+            model="account.financial.html.report.line">
+        <field name="name">INTERNAL SECURITY</field>
+        <field name="code">MAR-HSE-IS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'INTERNAL SECURITY'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_external_security0"
+            model="account.financial.html.report.line">
+        <field name="name">EXTERNAL SECURITY</field>
+        <field name="code">MAR-HSE-ES</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'EXTERNAL SECURITY'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_operational_supplies5"
+            model="account.financial.html.report.line">
+        <field name="name">OPERATIONAL SUPPLIES</field>
+        <field name="code">MAR-HSE-OS</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'OPERATIONAL SUPPLIES'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_cleaning5"
+            model="account.financial.html.report.line">
+        <field name="name">CLEANING</field>
+        <field name="code">MAR-HSE-CG</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'CLEANING'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_total_indirect_overheads0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL INDIRECT OVERHEADS</field>
+        <field name="code">MAR-HSE-TIO</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL INDIRECT OVERHEADS'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_total_direct_cost_indirect0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL DIRECT COSTS &amp; INDIRECT</field>
+        <field name="code">MAR-HSE-TDCI</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL DIRECT COSTS &amp; INDIRECT'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_mfg_good_trf_standard0"
+            model="account.financial.html.report.line">
+        <field name="name">MFG. GOODS TRF. AT STANDARD CO</field>
+        <field name="code">MAR-HSE-MGTSC</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'MFG. GOODS TRF. AT STANDARD CO'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_total_variance0"
+            model="account.financial.html.report.line">
+        <field name="name">TOTAL VARIANCE</field>
+        <field name="code">MAR-HSE-TV</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'TOTAL VARIANCE'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+    <record
+            id="account_financial_report_margarine_gross_profit0"
+            model="account.financial.html.report.line">
+        <field name="name">GROSS PROFIT</field>
+        <field name="code">MAR-HSE-GP</field>
+        <field name="formulas">-sum</field>
+        <field name="parent_id"
+               ref='account_financial_report_margarine_hse0'/>
+        <field name="domain"
+               eval="[('account_id.tag_ids.name', 'ilike', 'GROSS PROFIT'),('account_id.div_id.name', '=', 'MARGARINE'), ('account_id.internal_group', 'in', ['income','expense'])]"/>
+        <field name="groupby">account_id</field>
+        <field name="hide_if_zero" eval="True"/>
+        <field name="sequence" eval="1"/>
+        <field name="level" eval="3"/>
+    </record>
+
+
+    <record id="action_account_report_margarine_division"
+            model="ir.actions.client">
+        <field name="name">Margarine</field>
+        <field name="tag">account_report</field>
+        <field name="context"
+               eval="{'model': 'account.financial.html.report', 'id': ref('account_financial_report_division4')}"/>
+    </record>
+
+
+</data>
